@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Products"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/BtnPre"
+            android:layout_width="53dp"
+            android:layout_height="53dp"
+            android:layout_marginLeft="29dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/grey_bler_fill__rounded_color"></TextView>
+
+        <ImageView
+            android:id="@+id/BtnPre1"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="38dp"
+            android:layout_marginTop="17dp"
+            android:src="@drawable/arrow1"></ImageView>
+
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+
+            android:layout_marginLeft="327dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/menu_1"></ImageView>
+    </RelativeLayout>
+</RelativeLayout>

@@ -4,7 +4,484 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.Home">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="-100dp"
+            tools:layout_editor_absoluteY="32dp">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginTop="30dp"
+                    android:text="Good Morning"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"></TextView>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginTop="49dp"
+                    android:text="Micheal"
+                    android:textColor="@color/black"
+                    android:textSize="30dp"
+                    android:textStyle="bold"></TextView>
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="275dp"
+                    android:layout_marginTop="35dp"
+                    android:src="@drawable/shoppingbag"></ImageView>
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="329dp"
+                    android:layout_marginTop="41dp"
+                    android:src="@drawable/menu"></ImageView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="28dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:background="@drawable/edit_fill__rounded_color"
+                    android:hint="Search beverages of foods"
+                    android:maxLines="1"
+                    android:paddingLeft="25dp"></EditText>
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="285dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/iconsearch"></ImageView>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="70dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="235dp"
+                            android:layout_height="250dp"
+                            android:layout_marginStart="28dp"
+                            android:background="@drawable/green_fill__rounded_color"></TextView>
+
+                        <TextView
+                            android:layout_width="235dp"
+                            android:layout_height="250dp"
+                            android:layout_marginStart="28dp"
+                            android:background="@drawable/green_fill__rounded_color"></TextView>
+
+                        <TextView
+                            android:layout_width="235dp"
+                            android:layout_height="250dp"
+                            android:layout_marginStart="28dp"
+                            android:background="@drawable/green_fill__rounded_color"></TextView>
+
+                        <TextView
+                            android:layout_width="235dp"
+                            android:layout_height="250dp"
+                            android:layout_marginStart="28dp"
+                            android:background="@drawable/green_fill__rounded_color"></TextView>
+
+                        <TextView
+                            android:layout_width="235dp"
+                            android:layout_height="250dp"
+                            android:layout_marginStart="28dp"
+                            android:background="@drawable/green_fill__rounded_color"></TextView>
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Categories"
+                    android:textColor="@color/black"
+                    android:textSize="23dp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginTop="35dp">
+                </TextView>
+
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <RelativeLayout
+                            android:layout_width="235dp"
+                            android:layout_height="90dp"
+                            android:layout_marginStart="28dp"
+                            android:layout_marginTop="100dp"
+                            android:background="@drawable/trans_bler_fill__rounded_color">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="75dp"
+                                android:layout_marginTop="13dp"
+                                android:text="Beverages"
+                                android:textColor="@color/black"
+                                android:textSize="22dp"
+                                android:textStyle="bold"></TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="75dp"
+                                android:layout_marginTop="50dp"
+                                android:text="67 Menus"
+                                android:textColor="#04764E"
+                                android:textSize="18dp"></TextView>
+
+                            <ImageView
+                                android:layout_width="68dp"
+                                android:layout_height="68dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="13dp"
+                                android:src="@drawable/iconbev"></ImageView>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="235dp"
+                            android:layout_height="90dp"
+                            android:layout_marginStart="28dp"
+                            android:layout_marginTop="100dp"
+                            android:background="@drawable/trans_bler_fill__rounded_color">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="75dp"
+                                android:layout_marginTop="13dp"
+                                android:text="Pizza"
+                                android:textColor="@color/black"
+                                android:textSize="22dp"
+                                android:textStyle="bold"></TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="75dp"
+                                android:layout_marginTop="50dp"
+                                android:text="22 Menus"
+                                android:textColor="#04764E"
+                                android:textSize="18dp"></TextView>
+
+                            <ImageView
+                                android:layout_width="68dp"
+                                android:layout_height="68dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="13dp"
+                                android:src="@drawable/iconpizza"></ImageView>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="235dp"
+                            android:layout_height="90dp"
+                            android:layout_marginStart="28dp"
+                            android:layout_marginTop="100dp"
+                            android:background="@drawable/trans_bler_fill__rounded_color">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="75dp"
+                                android:layout_marginTop="13dp"
+                                android:text="Drink"
+                                android:textColor="@color/black"
+                                android:textSize="22dp"
+                                android:textStyle="bold"></TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="75dp"
+                                android:layout_marginTop="50dp"
+                                android:text="12 Menus"
+                                android:textColor="#04764E"
+                                android:textSize="18dp"></TextView>
+
+                            <ImageView
+                                android:layout_width="68dp"
+                                android:layout_height="68dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="13dp"
+                                android:src="@drawable/icondrink"></ImageView>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="235dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="28dp"
+                            android:layout_marginTop="100dp"
+                            android:background="@drawable/trans_bler_fill__rounded_color">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="75dp"
+                                android:layout_marginTop="13dp"
+                                android:text="Lunch"
+                                android:textColor="@color/black"
+                                android:textSize="22dp"
+                                android:textStyle="bold"></TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="75dp"
+                                android:layout_marginTop="50dp"
+                                android:text="67 Menus"
+                                android:textColor="#04764E"
+                                android:textSize="18dp"></TextView>
+
+                            <ImageView
+                                android:layout_width="68dp"
+                                android:layout_height="68dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="13dp"
+                                android:src="@drawable/iconpizza"></ImageView>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="235dp"
+                            android:layout_height="90dp"
+                            android:layout_marginStart="28dp"
+                            android:layout_marginTop="100dp"
+                            android:background="@drawable/trans_bler_fill__rounded_color">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="75dp"
+                                android:layout_marginTop="13dp"
+                                android:text="Burger"
+                                android:textColor="@color/black"
+                                android:textSize="22dp"
+                                android:textStyle="bold"></TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="75dp"
+                                android:layout_marginTop="50dp"
+                                android:text="22 Menus"
+                                android:textColor="#04764E"
+                                android:textSize="18dp"></TextView>
+
+                            <ImageView
+                                android:layout_width="68dp"
+                                android:layout_height="68dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="13dp"
+                                android:src="@drawable/iconburger"></ImageView>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Featured Beverages"
+                    android:textColor="@color/black"
+                    android:textSize="23dp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginTop="42dp">
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="325dp"
+                    android:layout_marginTop="45dp"
+                    android:text="More"
+                    android:textColor="#04764E"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
+                    android:id="@+id/AllProduct"></TextView>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="30dp">
+
+                        <ImageView
+                            android:layout_width="135dp"
+                            android:layout_height="147dp"
+                            android:layout_marginLeft="15dp"
+                            android:foreground="@drawable/corner"
+                            android:src="@drawable/product1"></ImageView>
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="32dp"
+                            android:layout_marginLeft="42dp"
+                            android:layout_marginTop="118dp"
+                            android:background="@drawable/orange_fill__rounded_color">
+
+                        </TextView>
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginLeft="53dp"
+                            android:layout_marginTop="124dp"
+                            android:src="@drawable/star"></ImageView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="80dp"
+                            android:layout_marginTop="120dp"
+                            android:text="3.8"
+                            android:textColor="@color/white"
+                            android:textSize="20dp"></TextView>
+                        <TextView
+                            android:layout_width="220dp"
+                            android:layout_height="70dp"
+                            android:layout_marginLeft="155dp"
+                            android:layout_marginTop="13dp"
+                            android:text="Hot Creamy Cappuccino Latte Ombe"
+                            android:textColor="@color/black"
+                            android:textSize="18dp"
+                            android:textStyle="bold"></TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="155dp"
+                            android:layout_marginTop="81dp"
+                            android:text="$12.6"
+                            android:textColor="@color/black"
+                            android:textSize="21dp"
+                            android:textStyle="bold"></TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="310dp"
+                            android:layout_marginTop="85dp"
+                            android:text="50Pts"
+                            android:textColor="#04764E"
+                            android:textSize="21dp"
+                            android:textStyle="bold"></TextView>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="30dp">
+
+                        <ImageView
+                            android:layout_width="134dp"
+                            android:layout_height="147dp"
+                            android:layout_marginLeft="15dp"
+                            android:foreground="@drawable/corner"
+                            android:src="@drawable/product1"></ImageView>
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="32dp"
+                            android:layout_marginLeft="42dp"
+                            android:layout_marginTop="118dp"
+                            android:background="@drawable/orange_fill__rounded_color">
+
+                        </TextView>
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginLeft="53dp"
+                            android:layout_marginTop="124dp"
+                            android:src="@drawable/star"></ImageView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="80dp"
+                            android:layout_marginTop="120dp"
+                            android:text="3.8"
+                            android:textColor="@color/white"
+                            android:textSize="20dp"></TextView>
+
+                        <TextView
+                            android:layout_width="220dp"
+                            android:layout_height="70dp"
+                            android:layout_marginLeft="155dp"
+                            android:layout_marginTop="13dp"
+                            android:text="Hot Creamy Cappuccino Latte Ombe"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold"></TextView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="155dp"
+                            android:layout_marginTop="85dp"
+                            android:text="$12.6"
+                            android:textColor="@color/black"
+                            android:textSize="21dp"
+                            android:textStyle="bold"></TextView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="310dp"
+                            android:layout_marginTop="85dp"
+                            android:text="50Pts"
+                            android:textColor="#04764E"
+                            android:textSize="21dp"
+                            android:textStyle="bold"></TextView>
+                    </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>

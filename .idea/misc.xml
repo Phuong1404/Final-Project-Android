@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26614583333333336" />
+        <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/drawable/corner.xml" value="0.23802083333333332" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/drawable/ic_home.xml" value="0.26614583333333336" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.26614583333333336" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/drawable/ic_menu_camera.xml" value="0.26614583333333336" />
@@ -12,6 +13,7 @@
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/drawable/ic_store.xml" value="0.26614583333333336" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/drawable/ic_user.xml" value="0.1359375" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/drawable/side_nav_bar.xml" value="0.26614583333333336" />
+        <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/activity_all_product.xml" value="0.264" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/activity_choose_login.xml" value="0.25" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.20842379504993486" />
@@ -22,12 +24,17 @@
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/activity_verify.xml" value="0.25" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/app_bar_main.xml" value="0.234375" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/content_main.xml" value="0.25" />
+        <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/fragment_category1.xml" value="0.25" />
+        <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/fragment_category2.xml" value="0.2359375" />
+        <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/fragment_category3.xml" value="0.25" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/fragment_gallery.xml" value="0.234375" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/fragment_my_order.xml" value="0.25" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/fragment_rewards.xml" value="0.25" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/nav_header_main.xml" value="0.264" />
+        <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/product_item.xml" value="0.23072916666666668" />
+        <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/tool_bar.xml" value="0.1" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/welcome_slide1.xml" value="0.25" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/menu/activity_main_drawer.xml" value="0.72" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/menu/main.xml" value="0.21302083333333333" />
