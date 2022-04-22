@@ -10,6 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject">
         <activity
+            android:name=".VerifyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ResetPassActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChooseLoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".StartScreenActivity"
             android:exported="false" />
         <activity
