@@ -7,19 +7,25 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.finalproject.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:name="com.example.finalproject.ui.Home"
+        android:label="Home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.finalproject.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_myorder"
+        android:name="com.example.finalproject.ui.MyOrder"
+        android:label="My Order"
+        tools:layout="@layout/fragment_my_order" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.finalproject.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_rewards"
+        android:name="com.example.finalproject.ui.Rewards"
+        android:label="Rewards"
+        tools:layout="@layout/fragment_rewards" />
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.finalproject.ui.Profile"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>
