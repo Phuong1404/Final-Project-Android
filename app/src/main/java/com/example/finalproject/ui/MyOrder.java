@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.finalproject.Adapter.ListOrderAdater;
+import com.example.finalproject.Adapter.ListProductAdater;
 import com.example.finalproject.Helper.FirebaseData;
 import com.example.finalproject.Models.Cart;
 import com.example.finalproject.Models.Product;
@@ -37,7 +38,7 @@ public class MyOrder extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        if(view!=null){
+        if(view==null){
             view=inflater.inflate(R.layout.fragment_my_order, container, false);
         }
         List<Cart>listCart=new ArrayList<>();
@@ -47,11 +48,18 @@ public class MyOrder extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listCart.clear();
+                Product product=new Product();
                 for(DataSnapshot ds:snapshot.getChildren())
                 {
                     Map singleValue=(Map)ds.getValue();
-                    //String Quantity=
+                    int Quantity=((Long) singleValue.get("Quantity")).intValue();
+                    String OrderRequest=(String)singleValue.get("OrderRequest");
+                    double Total=((Long) singleValue.get("Total")).doubleValue();
+                    listCart.add(new Cart(Quantity,product,OrderRequest,Total));
                 }
+                adater=new ListOrderAdater(getActivity(),listCart);
+                listView.setDivider(null);
+                listView.setAdapter(adater);
             }
 
             @Override

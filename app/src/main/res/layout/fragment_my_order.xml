@@ -12,7 +12,7 @@
     <include layout="@layout/tool_bar"></include>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="563dp"
+            android:layout_height="645dp"
             android:orientation="vertical">
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -40,17 +40,20 @@
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp">
+
                 <ListView
+                    android:id="@+id/Lisview_Order"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/Lisview_Order"
-                    android:divider="@null"
-                    android:listSelector="@android:color/transparent"
-                    android:focusableInTouchMode="true"
                     android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp">
-                </ListView>
+                    android:layout_marginBottom="5dp"
+                    android:divider="@null"
+                    android:focusableInTouchMode="true"
+                    android:listSelector="@android:color/transparent"
+                    android:scrollbars="none"
+                    android:layout_marginRight="15dp"></ListView>
             </RelativeLayout>
 
         </LinearLayout>
@@ -58,8 +61,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:paddingBottom="20dp"
-            android:paddingTop="15dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="5dp"
             android:layout_alignParentBottom="true">
             <TextView
                 android:layout_marginLeft="37dp"

@@ -35,9 +35,9 @@ public class ListOrderAdater extends ArrayAdapter<Cart> {
         TextView total=view.findViewById(R.id.Total);
 
         name.setText(ListCart.get(position).getProduct().getName());
-        quantity.setText(ListCart.get(position).getQuantity());
-        price.setText(ListCart.get(position).getProduct().getPrice());
-        total.setText(Double.toString(ListCart.get(position).getTotal()));
+        quantity.setText(String.valueOf(ListCart.get(position).getQuantity())+"x");
+        price.setText("$"+ListCart.get(position).getProduct().getPrice());
+        total.setText("$"+Double.toString(ListCart.get(position).getTotal()));
         return view;
     }
 }
