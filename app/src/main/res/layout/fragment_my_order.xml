@@ -5,10 +5,74 @@
     android:layout_height="match_parent"
     tools:context=".ui.MyOrder">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="2" />
+        android:orientation="vertical">
+    <include layout="@layout/tool_bar"></include>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="563dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="28dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/edit_fill__rounded_color"
+                    android:hint="Search beverages of foods"
+                    android:maxLines="1"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="60dp"
+                    android:singleLine="true"></EditText>
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="285dp"
+                    android:layout_marginTop="18dp"
+                    android:src="@drawable/iconsearch"></ImageView>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/Lisview_Order"
+                    android:divider="@null"
+                    android:listSelector="@android:color/transparent"
+                    android:focusableInTouchMode="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp">
+                </ListView>
+            </RelativeLayout>
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:paddingBottom="20dp"
+            android:paddingTop="15dp"
+            android:layout_alignParentBottom="true">
+            <TextView
+                android:layout_marginLeft="37dp"
+                android:layout_width="340dp"
+                android:layout_height="60dp"
+                android:text="PLACE ORDER"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:background="@drawable/green_fill__rounded_color">
+            </TextView>
+        </RelativeLayout>
+    </LinearLayout>
 
 </FrameLayout>

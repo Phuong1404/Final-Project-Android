@@ -17,4 +17,8 @@ public class FirebaseData {
         mDatabase=database.getReference("Test");
         mDatabase.setValue("Test6");
     }
+    public DatabaseReference GetDataCart(String Username)
+    {
+        return database.getReference("Users").child(Username).child("Cart");
+    }
 }
