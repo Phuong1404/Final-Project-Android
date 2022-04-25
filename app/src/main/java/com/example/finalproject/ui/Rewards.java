@@ -47,6 +47,7 @@ public class Rewards extends Fragment {
         FirebaseData data=new FirebaseData();
         List<Detail> listDetail=new ArrayList<>();
         listView=(ListView) view.findViewById(R.id.listview_Reward);
+        listView.setEnabled(false);
         data.GetDetail("User01").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -60,9 +61,11 @@ public class Rewards extends Fragment {
                     String date= (String) singleValue.get("date");
                     listDetail.add(new Detail(Id,product,date));
                 }
+                listView.getLayoutParams().height=350*listDetail.size();
                 adater=new ListRewardAdater(getActivity(),listDetail);
                 listView.setDivider(null);
                 listView.setAdapter(adater);
+
             }
 
             @Override
