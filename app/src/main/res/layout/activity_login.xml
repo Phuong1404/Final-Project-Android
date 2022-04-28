@@ -57,12 +57,13 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="19dp"
                 android:layout_marginRight="25dp"
+                android:background="@drawable/fill__rounded_color"
                 android:maxLines="1"
                 android:padding="20dp"
                 android:paddingBottom="9dp"
+                android:id="@+id/email"
                 android:text="info@example.com"
-                android:textSize="17dp"
-                android:background="@drawable/fill__rounded_color"></EditText>
+                android:textSize="17dp"></EditText>
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
@@ -87,6 +88,7 @@
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:textSize="17dp"
+                android:id="@+id/password"
                 android:background="@drawable/fill__rounded_color"></EditText>
         </RelativeLayout>
         <RelativeLayout

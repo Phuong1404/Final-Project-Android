@@ -11,14 +11,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.finalproject.AllProductActivity;
+import com.example.finalproject.LoginActivity;
 import com.example.finalproject.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class Home extends Fragment {
     private View view;
-    TextView AllProduct;
+    TextView AllProduct,logout;
+    FirebaseAuth mAuth;
     public Home() {
-        // Required empty public constructor
+        mAuth=FirebaseAuth.getInstance();
     }
 
 
@@ -34,6 +37,7 @@ public class Home extends Fragment {
             view=inflater.inflate(R.layout.fragment_home, container, false);
         }
         AllProduct=view.findViewById(R.id.AllProduct);
+        logout=view.findViewById(R.id.logout);
         //------------------------------------------------------------------------------
 
         AllProduct.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +45,13 @@ public class Home extends Fragment {
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(), AllProductActivity.class);
                 startActivity(i);
+            }
+        });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAuth.signOut();
+                startActivity(new Intent(getActivity(), LoginActivity.class));
             }
         });
         return view;

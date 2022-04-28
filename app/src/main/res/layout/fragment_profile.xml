@@ -1,14 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.Profile">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="4" />
+        android:orientation="vertical">
+        <include layout="@layout/tool_bar"></include>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="30dp">
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="80dp"
+                        android:layout_marginLeft="115dp">
+                        <ImageView
+                            android:layout_width="160dp"
+                            android:layout_height="160dp"
+                            android:src="@drawable/illustrator4"
+                            android:background="@drawable/around_shadow_border"
+                            ></ImageView>
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="85dp"
+                    android:layout_marginRight="85dp">
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="William Smith"
+                        android:textColor="@color/black"
+                        android:textSize="35dp"
+                        android:textStyle="bold"></TextView>
+
+                    <TextView
+                        android:id="@+id/location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="55dp"
+                        android:text="London, England"
+                        android:textColor="#04764E"
+                        android:textSize="20dp"></TextView>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="105dp"
+                        android:layout_height="105dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginLeft="18dp"
+                        android:src="@drawable/phone_info"></ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="123dp"
+                        android:layout_marginTop="33dp"
+                        android:text="Mobile Phone"
+                        android:textSize="15dp"></TextView>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="123dp"
+                        android:layout_marginTop="62dp"
+                        android:layout_marginRight="135dp"
+                        android:background="@color/green_app" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="123dp"
+                        android:layout_marginTop="66dp"
+                        android:text="+84 769 524 973"
+                        android:textColor="@color/black"
+                        android:textSize="17dp"
+                        android:textStyle="bold"
+                        android:id="@+id/phone"></TextView>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="105dp"
+                        android:layout_height="105dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginLeft="18dp"
+                        android:src="@drawable/mail_info"></ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="123dp"
+                        android:layout_marginTop="33dp"
+                        android:text="Email"
+                        android:textSize="15dp"></TextView>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="123dp"
+                        android:layout_marginTop="62dp"
+                        android:layout_marginRight="135dp"
+                        android:background="@color/green_app" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="123dp"
+                        android:layout_marginTop="66dp"
+                        android:text="t.xuanphuong1404@gmail.com"
+                        android:textColor="@color/black"
+                        android:textSize="17dp"
+                        android:textStyle="bold"
+                        android:id="@+id/email"></TextView>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="105dp"
+                        android:layout_height="105dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginLeft="18dp"
+                        android:src="@drawable/address_info"></ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="123dp"
+                        android:layout_marginTop="33dp"
+                        android:text="Address"
+                        android:textSize="15dp"></TextView>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="123dp"
+                        android:layout_marginTop="62dp"
+                        android:layout_marginRight="135dp"
+                        android:background="@color/green_app" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="123dp"
+                        android:layout_marginTop="66dp"
+                        android:text="484 Lê Văn Việt, Quận 9, TP. HCM"
+                        android:textColor="@color/black"
+                        android:textSize="17dp"
+                        android:textStyle="bold"
+                        android:id="@+id/address"
+                        android:layout_marginRight="25dp"></TextView>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Most Ordered"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="22dp"
+                        android:layout_marginLeft="29dp"
+                        android:layout_marginTop="20dp">
+                    </TextView>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <HorizontalScrollView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="18dp"
+                        android:scrollbars="none">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp">
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="18dp">
+                            <TextView
+                                android:layout_width="250dp"
+                                android:layout_height="80dp"
+                                android:background="@drawable/green_fill__rounded_color"></TextView>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="18dp">
+
+                            <TextView
+                                android:layout_width="250dp"
+                                android:layout_height="80dp"
+                                android:background="@drawable/green_fill__rounded_color"></TextView>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="18dp">
+                            <TextView
+                                android:layout_width="250dp"
+                                android:layout_height="80dp"
+                                android:background="@drawable/green_fill__rounded_color"></TextView>
+                        </RelativeLayout>
+                    </LinearLayout>
+                    </HorizontalScrollView>
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 
 </FrameLayout>

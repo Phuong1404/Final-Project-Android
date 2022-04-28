@@ -2,65 +2,72 @@ package com.example.finalproject.ui;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.finalproject.Helper.FirebaseData;
+import com.example.finalproject.Models.User;
 import com.example.finalproject.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Profile#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.Map;
+
 public class Profile extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    private View view;
+    TextView Name,Location,PhoneNum,Email,Address;
     public Profile() {
         // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Profile.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Profile newInstance(String param1, String param2) {
-        Profile fragment = new Profile();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        if(view==null){
+            view=inflater.inflate(R.layout.fragment_profile, container, false);
+        }
+        FirebaseData data=new FirebaseData();
+        Name=(TextView) view.findViewById(R.id.name);
+        Location=(TextView) view.findViewById(R.id.location);
+        PhoneNum=(TextView) view.findViewById(R.id.phone);
+        Email=(TextView) view.findViewById(R.id.email);
+        Address=(TextView) view.findViewById(R.id.address);
+        data.GetDataUser("User01").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = null;
+                Map singleValue=(Map)snapshot.getValue();
+                String Id1=snapshot.getKey();
+                String Name1= (String) singleValue.get("Name");
+                String Phone1= (String) singleValue.get("Phone");
+                String Address1= (String) singleValue.get("Address");
+                String Email1=(String) singleValue.get("Email");
+                user=new User(Id1,Name1,"",Address1,Email1,Phone1,0,0,"");
+
+                Name.setText(user.getName());
+                Location.setText("District 9, Ho Chi Minh");
+                PhoneNum.setText(user.getPhoneNumber());
+                Email.setText(user.getEmail());
+                Address.setText(user.getAddress());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return view;
     }
 }
