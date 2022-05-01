@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="26 June | 12:30 PM"
+            android:textSize="15dp">
+        </TextView>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="37dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_user"
+                app:tint="@color/green_app"
+                android:layout_marginTop="1dp">
+            </ImageView>
+            <TextView
+                android:layout_marginLeft="38dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Americano"
+                android:textColor="@color/green_app"
+                android:textSize="17dp"
+                android:textStyle="bold">
+            </TextView>
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="76dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="1dp"
+                android:src="@drawable/ic_location"
+                app:tint="@color/green_app"></ImageView>
+            <TextView
+                android:layout_marginLeft="38dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="An Khe, Gia Lai"
+                android:textColor="@color/green_app"
+                android:textSize="17dp"
+                android:textStyle="bold">
+            </TextView>
+        </RelativeLayout>
+        </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:gravity="right"
+            android:text="$120.23"
+            android:textSize="27dp"
+            android:textStyle="bold"></TextView>
+    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="282dp"
+                android:layout_marginTop="64.5dp"
+                android:background="@drawable/green_fill__rounded_color"
+                android:gravity="center"
+                android:text="CANCEL"
+                android:textColor="@color/white"
+                android:textSize="13dp"
+                android:textStyle="bold"></TextView>
+        </RelativeLayout>
+    </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
