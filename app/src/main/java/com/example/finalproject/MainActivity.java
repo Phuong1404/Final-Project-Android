@@ -1,24 +1,18 @@
 package com.example.finalproject;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
+import android.view.Gravity;
 import android.view.Menu;
-import android.widget.Switch;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.finalproject.databinding.ActivityMainBinding;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
 
     FirebaseAuth mAuth;
-
+    DrawerLayout mDrawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         DrawerLayout drawer = binding.drawerLayout;
+        mDrawerLayout=binding.drawerLayout;
         NavigationView navigationView = binding.navView;
 
 
@@ -61,5 +56,14 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+    public void open(){
+        if(mDrawerLayout.isDrawerOpen(Gravity.LEFT))
+        {
+            mDrawerLayout.closeDrawer(Gravity.LEFT);
+        }
+        else{
+            mDrawerLayout.openDrawer(Gravity.LEFT);
+        }
     }
 }

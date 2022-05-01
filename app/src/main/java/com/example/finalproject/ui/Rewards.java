@@ -1,5 +1,6 @@
 package com.example.finalproject.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,11 +9,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.finalproject.Adapter.ListOrderAdater;
 import com.example.finalproject.Adapter.ListRewardAdater;
 import com.example.finalproject.Helper.FirebaseData;
+import com.example.finalproject.MainActivity;
 import com.example.finalproject.Models.Detail;
 import com.example.finalproject.Models.Product;
 import com.example.finalproject.R;
@@ -30,6 +33,8 @@ public class Rewards extends Fragment {
     private View view;
     ListView listView;
     ListRewardAdater adater;
+    private ImageView BtnPre1;
+    ImageView menubar;
     public Rewards() {
 
     }
@@ -71,6 +76,21 @@ public class Rewards extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+        BtnPre1=view.findViewById(R.id.BtnPre1);
+        menubar=view.findViewById(R.id.menubar);
+        BtnPre1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), MainActivity.class);
+                startActivity(i);
+            }
+        });
+        menubar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity)getActivity()).open();
             }
         });
         return view;

@@ -51,7 +51,8 @@
                     android:layout_height="35dp"
                     android:layout_marginLeft="329dp"
                     android:layout_marginTop="41dp"
-                    android:src="@drawable/menu"></ImageView>
+                    android:src="@drawable/menu"
+                    android:id="@+id/menubar"></ImageView>
             </RelativeLayout>
 
             <RelativeLayout

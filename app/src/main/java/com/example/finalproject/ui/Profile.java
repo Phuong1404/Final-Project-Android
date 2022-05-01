@@ -1,5 +1,6 @@
 package com.example.finalproject.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,9 +9,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.finalproject.Helper.FirebaseData;
+import com.example.finalproject.MainActivity;
 import com.example.finalproject.Models.User;
 import com.example.finalproject.R;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +26,8 @@ public class Profile extends Fragment {
 
     private View view;
     TextView Name,Location,PhoneNum,Email,Address;
+    private ImageView BtnPre1;
+    ImageView menubar;
     public Profile() {
         // Required empty public constructor
     }
@@ -66,6 +71,21 @@ public class Profile extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+        BtnPre1=view.findViewById(R.id.BtnPre1);
+        menubar=view.findViewById(R.id.menubar);
+        BtnPre1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), MainActivity.class);
+                startActivity(i);
+            }
+        });
+        menubar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity)getActivity()).open();
             }
         });
         return view;
