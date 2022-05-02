@@ -46,7 +46,8 @@
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -62,23 +63,25 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
+                        android:id="@+id/sizeM"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:layout_marginLeft="160dp"
+                        android:layout_marginLeft="185dp"
                         android:layout_marginTop="30dp"
+                        android:onClick="OnClick"
                         android:src="@drawable/coffeecup"></ImageView>
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
                         android:src="@drawable/coffeecup"
-                        android:layout_marginLeft="220dp"
+                        android:layout_marginLeft="245dp"
                         android:layout_marginTop="20.5dp">
                     </ImageView>
 
                     <ImageView
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:layout_marginLeft="285dp"
+                        android:layout_marginLeft="310dp"
                         android:layout_marginTop="10dp"
                         android:src="@drawable/coffee"></ImageView>
                 </RelativeLayout>
@@ -104,6 +107,65 @@
                     android:textColor="@color/black"
                     android:textSize="25dp"
                     android:textStyle="bold"></TextView>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/left_half_circle"
+                        android:onClick="OnClick"
+                        android:gravity="center"
+                        android:textSize="22dp"
+                        android:textStyle="bold"
+                        android:id="@+id/buttonminus"
+                        android:layout_marginTop="33.5dp"
+                        android:layout_marginLeft="245.5dp"></TextView>
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/right_half_circle"
+                        android:onClick="OnClick"
+                        android:gravity="center"
+                        android:id="@+id/buttonplus"
+                        android:layout_marginLeft="325.5dp"
+                        android:layout_marginTop="33.5dp"
+                        android:textSize="22dp"
+                        android:textStyle="bold"></TextView>
+
+                    <TextView
+                        android:id="@+id/Quantity1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="285.5dp"
+                        android:layout_marginTop="33.5dp"
+                        android:background="@drawable/center_number"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="@color/black"
+                        android:textSize="25dp"
+                        android:textStyle="bold"></TextView>
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:id="@+id/imageminus"
+                        android:onClick="OnClick"
+                        android:layout_marginLeft="257.5dp"
+                        android:layout_marginTop="44dp"
+                        android:src="@drawable/ic_minus"
+                        app:tint="@color/green_app"></ImageView>
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/ic_plus"
+                        android:onClick="OnClick"
+                        android:id="@+id/imageplus"
+                        android:layout_marginTop="44dp"
+                        android:layout_marginLeft="335.5dp"
+                        app:tint="@color/green_app"></ImageView>
+                </RelativeLayout>
 
                 <View
                     android:layout_width="match_parent"
@@ -134,21 +196,21 @@
                     <ImageView
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:layout_marginLeft="160dp"
+                        android:layout_marginLeft="183dp"
                         android:layout_marginTop="30dp"
                         android:src="@drawable/fire"></ImageView>
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
                         android:src="@drawable/fire1"
-                        android:layout_marginLeft="220dp"
+                        android:layout_marginLeft="243dp"
                         android:layout_marginTop="20.5dp">
                     </ImageView>
 
                     <ImageView
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:layout_marginLeft="285dp"
+                        android:layout_marginLeft="307.5dp"
                         android:layout_marginTop="10dp"
                         android:src="@drawable/fire1"></ImageView>
                 </RelativeLayout>
@@ -181,14 +243,14 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:layout_marginLeft="210dp"
+                        android:layout_marginLeft="228dp"
                         android:layout_marginTop="30dp"
                         android:src="@drawable/coffeebean"></ImageView>
                     <ImageView
                         android:layout_width="65dp"
                         android:layout_height="65dp"
                         android:src="@drawable/coffeeb1"
-                        android:layout_marginLeft="280dp"
+                        android:layout_marginLeft="303.5dp"
                         android:layout_marginTop="20.5dp">
                     </ImageView>
                 </RelativeLayout>
@@ -221,21 +283,21 @@
                     <ImageView
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:layout_marginLeft="160dp"
+                        android:layout_marginLeft="182dp"
                         android:layout_marginTop="30dp"
                         android:src="@drawable/ice"></ImageView>
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:layout_marginLeft="220dp"
+                        android:layout_marginLeft="242dp"
                         android:layout_marginTop="26.5dp"
                         android:src="@drawable/icecubes"></ImageView>
 
                     <ImageView
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:layout_marginLeft="285dp"
+                        android:layout_marginLeft="305dp"
                         android:layout_marginTop="17dp"
                         android:src="@drawable/icecubes1"></ImageView>
                 </RelativeLayout>
@@ -243,7 +305,7 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="100dp">
+                android:layout_marginTop="70dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -253,15 +315,16 @@
                     android:textColor="@color/green_app"
                     android:layout_marginLeft="28dp">
                 </TextView>
+
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="28dp"
+                    android:gravity="right"
                     android:text="100.0$"
-                    android:textSize="24dp"
-                    android:textStyle="bold"
                     android:textColor="@color/green_app"
-                    android:layout_marginLeft="285dp">
-                </TextView>
+                    android:textSize="24dp"
+                    android:textStyle="bold"></TextView>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="wrap_content"

@@ -1,5 +1,6 @@
 package com.example.finalproject.Fragment.AllProduct;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.example.finalproject.Adapter.ListProductAdater;
 import com.example.finalproject.Helper.FirebaseData;
 import com.example.finalproject.Models.Product;
+import com.example.finalproject.ProductDetailActivity;
 import com.example.finalproject.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -65,7 +67,7 @@ public class CategoryFragment1 extends Fragment {
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Toast.makeText(getActivity().getApplication(),"Click",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getActivity(), ProductDetailActivity.class));
                     }
                 });
             }
