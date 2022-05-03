@@ -1,6 +1,7 @@
 package com.example.finalproject.Models;
 
 public class Product {
+    String Id;
     String Name;
     String Price;
     String Price_Point;
@@ -8,7 +9,8 @@ public class Product {
     String Image;
     Category Category;
     public Product(){}
-    public Product(String Name,String Price,String Price_Point,String Quantity, String Image,Category category){
+    public Product(String Id,String Name,String Price,String Price_Point,String Quantity, String Image,Category category){
+        this.Id=Id;
         this.Name=Name;
         this.Price=Price;
         this.Price_Point=Price_Point;
@@ -16,7 +18,12 @@ public class Product {
         this.Image=Image;
         this.Category=category;
     }
-
+    public String getId() {
+        return Id;
+    }
+    public void setId(String id) {
+        Id = id;
+    }
     public String getName() {
         return Name;
     }

@@ -362,6 +362,7 @@
 
                         <ImageView
                             android:layout_width="135dp"
+                            android:onClick="OpenDetail"
                             android:layout_height="147dp"
                             android:layout_marginLeft="15dp"
                             android:foreground="@drawable/corner"
@@ -388,11 +389,14 @@
                             android:text="3.8"
                             android:textColor="@color/white"
                             android:textSize="20dp"></TextView>
+
                         <TextView
                             android:layout_width="220dp"
                             android:layout_height="70dp"
                             android:layout_marginLeft="155dp"
                             android:layout_marginTop="13dp"
+                            android:onClick="OpenDetail"
+                            android:id="@+id/item1"
                             android:text="Hot Creamy Cappuccino Latte Ombe"
                             android:textColor="@color/black"
                             android:textSize="18dp"

@@ -1,6 +1,7 @@
 package com.example.finalproject.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.annotation.Nullable;
 
 
 import com.example.finalproject.Models.Product;
+import com.example.finalproject.ProductDetailActivity;
 import com.example.finalproject.R;
 
 import java.util.List;
@@ -41,7 +43,8 @@ public class ListProductAdater extends ArrayAdapter<Product> {
         Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(),"Click123",Toast.LENGTH_SHORT).show();
+                String data=productList.get(position).getName();
+                view.getContext().startActivity(new Intent(context, ProductDetailActivity.class));
             }
         });
         return view;

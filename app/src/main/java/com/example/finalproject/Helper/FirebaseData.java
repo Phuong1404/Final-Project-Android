@@ -28,4 +28,7 @@ public class FirebaseData {
     {
         return database.getReference("Users").child(Username);
     }
+    public DatabaseReference GetDataProduct(String ProductId){
+        return database.getReference("Products").child(ProductId);
+    }
 }

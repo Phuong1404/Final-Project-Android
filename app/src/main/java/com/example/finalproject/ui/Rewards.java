@@ -95,4 +95,7 @@ public class Rewards extends Fragment {
         });
         return view;
     }
+    public void Loyalty(){
+
+    }
 }

@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.finalproject.AllProductActivity;
 import com.example.finalproject.LoginActivity;
 import com.example.finalproject.MainActivity;
+import com.example.finalproject.ProductDetailActivity;
 import com.example.finalproject.R;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -70,5 +71,12 @@ public class Home extends Fragment {
             }
         });
         return view;
+    }
+    public void OpenDetail(View view){
+        int id=view.getId();
+        if(id==R.id.item1){
+            Intent intent=new Intent(getActivity(), ProductDetailActivity.class);
+            intent.putExtra("ProductId","Pro01");
+        }
     }
 }
