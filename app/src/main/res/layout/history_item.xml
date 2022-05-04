@@ -15,12 +15,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="26 June | 12:30 PM"
-                    android:textSize="15dp">
-                </TextView>
+                    android:id="@+id/dateorder"
+                    android:textSize="15dp"></TextView>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -46,6 +47,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Americano"
+                            android:id="@+id/name"
                             android:textColor="@color/green_app"
                             android:textSize="17dp"
                             android:textStyle="bold">
@@ -76,6 +78,7 @@
                             android:text="An Khe, Gia Lai"
                             android:textColor="@color/green_app"
                             android:textSize="17dp"
+                            android:id="@+id/address"
                             android:textStyle="bold">
                         </TextView>
                     </RelativeLayout>
@@ -92,6 +95,7 @@
                         android:layout_marginRight="20dp"
                         android:gravity="right"
                         android:text="$120.23"
+                        android:id="@+id/total"
                         android:textSize="27dp"
                         android:textStyle="bold"></TextView>
                 </RelativeLayout>
