@@ -38,6 +38,7 @@
                     android:textStyle="bold"></TextView>
 
                 <TextView
+                    android:id="@+id/accumulatedpoint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="290dp"
@@ -68,25 +69,25 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="7dp"
                         android:id="@+id/coffee_1"
-                        android:src="@drawable/coffee"></ImageView>
+                        android:src="@drawable/coffeecup"></ImageView>
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/coffee_2"
                         android:layout_marginLeft="8dp"
-                        android:src="@drawable/coffee"></ImageView>
+                        android:src="@drawable/coffeecup"></ImageView>
                     <ImageView
                         android:layout_width="50dp"
                         android:id="@+id/coffee_3"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
-                        android:src="@drawable/coffee"></ImageView>
+                        android:src="@drawable/coffeecup"></ImageView>
                     <ImageView
                         android:layout_width="50dp"
                         android:id="@+id/coffee_4"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
-                        android:src="@drawable/coffee"></ImageView>
+                        android:src="@drawable/coffeecup"></ImageView>
                     <ImageView
                         android:layout_width="50dp"
                         android:id="@+id/coffee_5"
@@ -120,6 +121,7 @@
                     android:textColor="@color/white"
                     android:textSize="24dp"
                     android:textStyle="bold"></TextView>
+
                 <TextView
                     android:id="@+id/points"
                     android:layout_width="wrap_content"
@@ -130,34 +132,35 @@
                     android:textColor="@color/white"
                     android:textSize="45dp"
                     android:textStyle="bold"></TextView>
-<RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="107dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="156dp"
-                    android:background="@drawable/blur_transparent_color"
 
-                    android:textColor="@color/white"
-                    android:alpha="0.3"
-
-                    android:paddingTop="7dp"
-                    android:paddingBottom="8dp"
-                    android:paddingRight="14dp"
-                    android:paddingLeft="14dp"
-                    android:layout_marginLeft="56dp">
-                </TextView>
-                <TextView
+                <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="162dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:layout_marginLeft="70dp"
-                    android:text="Redeem Gift">
-                </TextView>
-</RelativeLayout>
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="107dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="56dp"
+                        android:layout_marginTop="156dp"
+
+                        android:alpha="0.3"
+                        android:background="@drawable/blur_transparent_color"
+
+                        android:paddingLeft="14dp"
+                        android:paddingTop="7dp"
+                        android:paddingRight="14dp"
+                        android:paddingBottom="8dp"
+                        android:textColor="@color/white"></TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="70dp"
+                        android:layout_marginTop="162dp"
+                        android:text="Redeem Gift"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"></TextView>
+                </RelativeLayout>
             </RelativeLayout>
 
             <RelativeLayout
