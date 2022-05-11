@@ -26,7 +26,7 @@ public class HistoryAdater extends ArrayAdapter<Order> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.product_item,null,true);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.history_item,null,true);
         TextView DateOrder=view.findViewById(R.id.dateorder);
         TextView Name=view.findViewById(R.id.name);
         TextView Address=view.findViewById(R.id.address);

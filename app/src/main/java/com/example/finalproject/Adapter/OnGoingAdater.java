@@ -22,14 +22,14 @@ public class OnGoingAdater extends ArrayAdapter<Order> {
     List<Order> orderList;
     TextView Btn;
     public OnGoingAdater(@NonNull Context context, List<Order>dataOrder) {
-        super(context, R.layout.history_item,dataOrder);
+        super(context, R.layout.ongoing_item,dataOrder);
         this.context=context;
         this.orderList=dataOrder;
     }
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.product_item,null,true);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.ongoing_item,null,true);
         TextView DateOrder=view.findViewById(R.id.dateorder);
         TextView Name=view.findViewById(R.id.name);
         TextView Address=view.findViewById(R.id.address);
@@ -39,12 +39,10 @@ public class OnGoingAdater extends ArrayAdapter<Order> {
         Address.setText(orderList.get(position).getAddress());
         Total.setText(Double.toString(orderList.get(position).getTotal()));
         //-----------------------------------------------------------------
-        Btn=(TextView)view.findViewById(R.id.BtnBuy);
+        Btn=(TextView)view.findViewById(R.id.BtnCancel);
         Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String data=orderList.get(position).getName();
-                view.getContext().startActivity(new Intent(context, ProductDetailActivity.class));
             }
         });
         //-----------------------------------------------------------------

@@ -18,6 +18,11 @@ public class Product {
         this.Image=Image;
         this.Category=category;
     }
+    public Product(String Name,String Image,String Price){
+        this.Name=Name;
+        this.Image=Image;
+        this.Price=Price;
+    }
     public String getId() {
         return Id;
     }

@@ -43,8 +43,9 @@ public class ListProductAdater extends ArrayAdapter<Product> {
         Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String data=productList.get(position).getName();
-                view.getContext().startActivity(new Intent(context, ProductDetailActivity.class));
+                Intent intent=new Intent(context,ProductDetailActivity.class);
+                intent.putExtra("id",productList.get(position).getId());
+                view.getContext().startActivity(intent);
             }
         });
         return view;

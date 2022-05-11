@@ -4,20 +4,28 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.finalproject.Adapter.VPAdater;
 import com.example.finalproject.AllProductActivity;
+import com.example.finalproject.Fragment.History.HistoryFragment;
+import com.example.finalproject.Fragment.History.OngoingFragment;
 import com.example.finalproject.MainActivity;
 import com.example.finalproject.R;
+import com.google.android.material.tabs.TabLayout;
 
 public class History extends Fragment {
 
 
     private View view;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
     private ImageView BtnPre1;
     ImageView menubar;
     public History() {
@@ -37,8 +45,19 @@ public class History extends Fragment {
         if(view==null){
             view=inflater.inflate(R.layout.fragment_history, container, false);
         }
+
         BtnPre1=view.findViewById(R.id.BtnPre1);
         menubar=view.findViewById(R.id.menubar);
+        tabLayout=view.findViewById(R.id.tablayout);
+        viewPager=view.findViewById(R.id.viewpager);
+
+        HistoryFragment historyFragment=new HistoryFragment();
+        OngoingFragment ongoingFragment=new OngoingFragment();
+        VPAdater vpAdater=new VPAdater(getActivity().getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        vpAdater.addFragment(historyFragment,"History");
+        vpAdater.addFragment(ongoingFragment,"ongoing");
+        viewPager.setAdapter(vpAdater);
+        tabLayout.setupWithViewPager(viewPager);
         BtnPre1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

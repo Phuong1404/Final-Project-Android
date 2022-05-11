@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject">
         <activity
+            android:name=".DetailHistoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".SuccessOrderActivity"
             android:exported="false" />
         <activity
