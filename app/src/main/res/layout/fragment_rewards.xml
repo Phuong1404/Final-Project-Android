@@ -128,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="56dp"
                     android:layout_marginTop="80dp"
-                    android:text="87,550"
+                    android:text="0"
                     android:textColor="@color/white"
                     android:textSize="45dp"
                     android:textStyle="bold"></TextView>

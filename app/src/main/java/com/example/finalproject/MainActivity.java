@@ -1,8 +1,10 @@
 package com.example.finalproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -65,5 +67,10 @@ public class MainActivity extends AppCompatActivity {
         else{
             mDrawerLayout.openDrawer(Gravity.LEFT);
         }
+    }
+
+    public void Logout(MenuItem item) {
+        mAuth.signOut();
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
     }
 }

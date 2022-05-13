@@ -7,8 +7,9 @@ public class Cart {
     String OrderRequest;
     double Total;
     public Cart(){}
-    public Cart(int Quantity,Product Product,String OrderRequest,double Total)
+    public Cart(String Id,int Quantity,Product Product,String OrderRequest,double Total)
     {
+        this.Id=Id;
         this.Quantity=Quantity;
         this.Product=Product;
         this.OrderRequest=OrderRequest;

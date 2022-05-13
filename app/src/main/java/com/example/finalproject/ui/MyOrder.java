@@ -60,7 +60,7 @@ public class MyOrder extends Fragment {
                     int Quantity=((Long) singleValue.get("Quantity")).intValue();
                     String OrderRequest=(String)singleValue.get("OrderRequest");
                     double Total=((Long) singleValue.get("Total")).doubleValue();
-                    listCart.add(new Cart(Quantity,product,OrderRequest,Total));
+                    listCart.add(new Cart(ds.getKey(),Quantity,product,OrderRequest,Total));
                 }
                 adater=new ListOrderAdater(getActivity(),listCart);
                 listView.setDivider(null);

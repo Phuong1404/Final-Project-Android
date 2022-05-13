@@ -8,18 +8,30 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.finalproject.Helper.FirebaseData;
+import com.example.finalproject.Models.Cart;
+import com.example.finalproject.Models.Detail;
 import com.example.finalproject.Models.Product;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 
 public class ProductDetailActivity extends AppCompatActivity {
     String Size,Roas,Grind,Ice;
     double Total;
     int Quanlity;
-    TextView Quan1,Name,total;
+    Product product;
+    FirebaseAuth mAuth;
+    FirebaseData data;
+    TextView Quan1,Name,total,AddCard;
     ImageView SizeM,SizeL,SizeXL,SmallFire,MediumFire,BigFire,GrindSmall,GrindBig,NoneIce,HalfIce,FullIce;
 
     @Override
@@ -41,9 +53,11 @@ public class ProductDetailActivity extends AppCompatActivity {
         NoneIce=(ImageView)findViewById(R.id.noneice);
         HalfIce=(ImageView)findViewById(R.id.halfice);
         FullIce=(ImageView)findViewById(R.id.fullice);
+        AddCard=(TextView)findViewById(R.id.addcard);
         //endregion
+        mAuth=FirebaseAuth.getInstance();
         Size="M";Roas="Small";Grind="Small";Ice="Half";Quanlity=1;
-        FirebaseData data=new FirebaseData();
+        data=new FirebaseData();
         Intent intent = getIntent();
         String id1=intent.getStringExtra("id");
         data.GetDataProduct(id1).addValueEventListener(new ValueEventListener() {
@@ -51,6 +65,7 @@ public class ProductDetailActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Product data1=new Product();
                 data1=snapshot.getValue(Product.class);
+                product=data1;
                 Total=Double.parseDouble(data1.getPrice());
                 Name.setText(data1.getName());
                 total.setText("$ "+data1.getPrice());
@@ -62,6 +77,44 @@ public class ProductDetailActivity extends AppCompatActivity {
 
             }
         });
+        AddCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String OrderRequest=Size+"|"+Roas+"|"+Grind+"|"+Ice;
+                Date date = new Date();
+                String Id=getMd5(String.valueOf(Quanlity)+product.toString()+OrderRequest+String.valueOf(Total));
+                Cart detail=new Cart(Id,Quanlity,product,OrderRequest,Total);
+                AddToCart(detail);
+                Toast.makeText(ProductDetailActivity.this,"successfully added "+product.getName()+" to cart",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(ProductDetailActivity.this,AllProductActivity.class));
+            }
+        });
+    }
+     static String getMd5(String input)
+    {
+        try {
+            // Static getInstance method is called with hashing MD5
+            MessageDigest md = MessageDigest.getInstance("MD5");
+
+            // digest() method is called to calculate message digest
+            //  of an input digest() return array of byte
+            byte[] messageDigest = md.digest(input.getBytes());
+
+            // Convert byte array into signum representation
+            BigInteger no = new BigInteger(1, messageDigest);
+
+            // Convert message digest into hex value
+            String hashtext = no.toString(16);
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+            return hashtext;
+        }
+
+        // For specifying wrong message digest algorithms
+        catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void OnClick(View view){
         int id=view.getId();
@@ -227,4 +280,8 @@ public class ProductDetailActivity extends AppCompatActivity {
             Ice="Full";
         }
     }
+    public void AddToCart(Cart card){
+        data.AddCard(mAuth.getCurrentUser().getUid(),card);
+    }
+
 }

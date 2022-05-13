@@ -21,6 +21,7 @@ import com.example.finalproject.Models.Detail;
 import com.example.finalproject.Models.Product;
 import com.example.finalproject.Models.User;
 import com.example.finalproject.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -38,6 +39,7 @@ public class Rewards extends Fragment {
     private ImageView BtnPre1;
     ImageView menubar,coffee1,coffee2,coffee3,coffee4,coffee5;
     TextView Point,Point2;
+    FirebaseAuth mAuth;
     public Rewards() {
 
     }
@@ -63,10 +65,10 @@ public class Rewards extends Fragment {
         coffee3=(ImageView)view.findViewById(R.id.coffee_3);
         coffee4=(ImageView)view.findViewById(R.id.coffee_4);
         coffee5=(ImageView)view.findViewById(R.id.coffee_5);
-
+        mAuth=FirebaseAuth.getInstance();
         //endregion
         listView.setEnabled(false);
-        data.GetDetail("User01").addValueEventListener(new ValueEventListener() {
+        data.GetDetail(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listDetail.clear();
@@ -91,12 +93,12 @@ public class Rewards extends Fragment {
 
             }
         });
-        data.GetDataUser("User01").addValueEventListener(new ValueEventListener() {
+        data.GetDataUser(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Map singleValue=(Map)snapshot.getValue();
-                int GiftPoint= ((Long) singleValue.get("Gift_Point")).intValue();
-                int Point1=((Long) singleValue.get("Accumulated_Point")).intValue();
+                int GiftPoint= ((Long) singleValue.get("giftPoint")).intValue();
+                int Point1=((Long) singleValue.get("accumulatedPoint")).intValue();
                 if(Point1>5){
                     Point1=5;
                 }

@@ -360,17 +360,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="28dp"
                 android:layout_marginTop="20dp">
+
                 <TextView
                     android:layout_width="335dp"
+                    android:id="@+id/addcard"
                     android:layout_height="55dp"
-                    android:background="@drawable/green_fill__rounded_color"
-                    android:text="Next"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
                     android:layout_marginBottom="20dp"
+                    android:background="@drawable/green_fill__rounded_color"
                     android:gravity="center"
+                    android:text="Next"
+                    android:textColor="@color/white"
                     android:textSize="25dp"
-                    ></TextView>
+                    android:textStyle="bold"></TextView>
             </RelativeLayout>
         </LinearLayout>
         </ScrollView>

@@ -16,6 +16,7 @@ import com.example.finalproject.Helper.FirebaseData;
 import com.example.finalproject.MainActivity;
 import com.example.finalproject.Models.User;
 import com.example.finalproject.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -27,6 +28,7 @@ public class Profile extends Fragment {
     private View view;
     TextView Name,Location,PhoneNum,Email,Address;
     private ImageView BtnPre1;
+    FirebaseAuth mAuth;
     ImageView menubar;
     public Profile() {
         // Required empty public constructor
@@ -44,22 +46,24 @@ public class Profile extends Fragment {
             view=inflater.inflate(R.layout.fragment_profile, container, false);
         }
         FirebaseData data=new FirebaseData();
+        mAuth=FirebaseAuth.getInstance();
         Name=(TextView) view.findViewById(R.id.name);
         Location=(TextView) view.findViewById(R.id.location);
         PhoneNum=(TextView) view.findViewById(R.id.phone);
         Email=(TextView) view.findViewById(R.id.email);
         Address=(TextView) view.findViewById(R.id.address);
-        data.GetDataUser("User01").addValueEventListener(new ValueEventListener() {
+        data.GetDataUser(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = null;
                 Map singleValue=(Map)snapshot.getValue();
                 String Id1=snapshot.getKey();
-                String Name1= (String) singleValue.get("Name");
-                String Phone1= (String) singleValue.get("Phone");
-                String Address1= (String) singleValue.get("Address");
-                String Email1=(String) singleValue.get("Email");
-                user=new User(Id1,Name1,"",Address1,Email1,Phone1,0,0,"");
+                String Name1= (String) singleValue.get("name");
+                String Phone1= (String) singleValue.get("phone");
+                //String Address1= (String) singleValue.get("address");
+                String Email1=(String) singleValue.get("email");
+                user=new User(Id1,Name1,"","",Email1,Phone1,0,0,"");
+
 
                 Name.setText(user.getName());
                 Location.setText("District 9, Ho Chi Minh");

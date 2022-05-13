@@ -51,6 +51,12 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        Login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LoginUser();
+            }
+        });
     }
 
     private void LoginUser(){
@@ -85,12 +91,7 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseUser user=mAuth.getCurrentUser();
         if(user==null)
         {
-            Login.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    LoginUser();
-                }
-            });
+
         }
     }
 }

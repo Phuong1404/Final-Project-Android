@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.finalproject.Helper.FirebaseData;
+import com.example.finalproject.Models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -65,10 +67,13 @@ public class RegisterActivity extends AppCompatActivity {
             repassword.requestFocus();
         }
         else{
+            FirebaseData data=new FirebaseData();
             mAuth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
+                        User user=new User(mAuth.getCurrentUser().getUid(),Name,"","",Email,"",0,0,"");
+                        data.CreateNewUser(user);
                         Toast.makeText(RegisterActivity.this,"User registered successfully",Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
                     }
