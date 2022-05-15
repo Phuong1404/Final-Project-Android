@@ -5,15 +5,17 @@ import java.util.Date;
 public class Detail1 {
     String Id;
     Product product;
-    String Total;
-    String Quanlity;
+    double Total;
+    int Quanlity;
+    String OrderRequest;
     public Detail1(){};
-    public Detail1(String Id,Product product,String total,String quanlity)
+    public Detail1(String Id,Product product,double total,int quanlity,String OrderRequest)
     {
         this.Id=Id;
         this.product=product;
         this.Total=total;
         this.Quanlity=quanlity;
+        this.OrderRequest=OrderRequest;
     }
 
     public Product getProduct() {
@@ -32,19 +34,25 @@ public class Detail1 {
         Id = id;
     }
 
-    public String getQuanlity() {
+    public int getQuanlity() {
         return Quanlity;
     }
 
-    public void setTotal(String total) {
+    public void setTotal(double total) {
         Total = total;
     }
 
-    public String getTotal() {
+    public double getTotal() {
         return Total;
     }
 
-    public void setQuanlity(String quanlity) {
+    public void setQuanlity(int quanlity) {
         Quanlity = quanlity;
+    }
+    public String getOrderRequest() {
+        return OrderRequest;
+    }
+    public void setOrderRequest(String orderRequest) {
+        OrderRequest = orderRequest;
     }
 }

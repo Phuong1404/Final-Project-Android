@@ -64,17 +64,18 @@
             android:paddingBottom="10dp"
             android:paddingTop="5dp"
             android:layout_alignParentBottom="true">
+
             <TextView
-                android:layout_marginLeft="37dp"
                 android:layout_width="340dp"
                 android:layout_height="60dp"
+                android:layout_marginLeft="37dp"
+                android:background="@drawable/green_fill__rounded_color"
+                android:gravity="center"
                 android:text="PLACE ORDER"
                 android:textColor="@color/white"
-                android:textStyle="bold"
+                android:id="@+id/placeorder"
                 android:textSize="20dp"
-                android:gravity="center"
-                android:background="@drawable/green_fill__rounded_color">
-            </TextView>
+                android:textStyle="bold"></TextView>
         </RelativeLayout>
     </LinearLayout>
 

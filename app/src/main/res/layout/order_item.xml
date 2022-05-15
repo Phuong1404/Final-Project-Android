@@ -21,10 +21,10 @@
                 android:layout_width="220dp"
                 android:layout_height="55dp"
                 android:layout_marginLeft="155dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="14dp"
                 android:text="Hot Creamy Cappuccino Latte Ombe"
                 android:textColor="@color/black"
-                android:textSize="20dp"
+                android:textSize="22dp"
                 android:textStyle="bold"></TextView>
 
             <TextView
@@ -32,17 +32,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="155dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="96dp"
                 android:text="$5.8"
                 android:textColor="#777777"
                 android:textSize="21dp"
                 android:textStyle="bold"></TextView>
+
             <TextView
                 android:id="@+id/Quantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="245dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginLeft="235dp"
+                android:layout_marginTop="96dp"
                 android:text="2x"
                 android:textColor="#777777"
                 android:textSize="21dp"
@@ -51,8 +52,8 @@
                 android:id="@+id/Total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="300dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginLeft="290dp"
+                android:layout_marginTop="96dp"
                 android:text="$11.6"
                 android:textColor="#04764E"
                 android:textSize="21dp"

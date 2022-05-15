@@ -2,6 +2,8 @@ package com.example.finalproject.Helper;
 
 import com.example.finalproject.Models.Cart;
 import com.example.finalproject.Models.Detail;
+import com.example.finalproject.Models.Detail1;
+import com.example.finalproject.Models.Order;
 import com.example.finalproject.Models.User;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -15,14 +17,9 @@ public class FirebaseData {
 
         return database.getReference("Products");
     }
-    public void SetData()
-    {
-        mDatabase=database.getReference("Test");
-        mDatabase.setValue("Test6");
-    }
     public DatabaseReference GetDataCart(String Username)
     {
-        return database.getReference("Users").child(Username).child("Cart");
+        return database.getReference("Users").child(Username).child("card");
     }
     public DatabaseReference GetDetail(String Username){
         return database.getReference("Detail").child(Username);
@@ -38,12 +35,31 @@ public class FirebaseData {
         return database.getReference("Users").child(Username).child("Order");
     }
     public DatabaseReference GetDataHistoryDetail(String Username,String OrderId){
-        return database.getReference("Users").child(Username).child("Order").child(OrderId).child("Detail");
+        return database.getReference("Users").child(Username).child("order").child(OrderId).child("Detail");
+    }
+    public DatabaseReference GetDataOrder(String Username,String OrderId){
+        return database.getReference("Users").child(Username).child("order").child(OrderId);
     }
     public void CreateNewUser(User user){
         database.getReference("Users").child(user.getId()).setValue(user);
     }
     public void AddCard(String UserId, Cart card){
         database.getReference("Users").child(UserId).child("card").child(card.getId()).setValue(card);
+    }
+    public void AddOrder(String UserId, Order order)
+    {
+        database.getReference("Users").child(UserId).child("order").child(order.getId()).setValue(order);
+    }
+    public void AddOrderDetail1(String UserId, String OrderId, Detail1 detail1)
+    {
+        database.getReference("Users").child(UserId).child("order").child(OrderId).child(detail1.getId()).setValue(detail1);
+    }
+    public void AddOrderDetail(String UserId, String OrderId, Detail detail)
+    {
+        database.getReference("Detail").child(UserId).child(detail.getId()).setValue(detail);
+    }
+    public void deleteCart(String UserId,String CartId)
+    {
+        database.getReference("Users").child(UserId).child("card").child(CartId).removeValue();
     }
 }

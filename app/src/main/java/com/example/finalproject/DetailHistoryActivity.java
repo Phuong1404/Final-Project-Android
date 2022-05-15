@@ -44,7 +44,7 @@ public class DetailHistoryActivity extends AppCompatActivity {
                     String Quantity= (String) singleValue.get("Quantity");
                     String Total= (String) singleValue.get("Total");
                     Product product=ds.child("product").getValue(Product.class);
-                    listDetail1.add(new Detail1(Id,product,Total,Quantity));
+                    //listDetail1.add(new Detail1(Id,product,Total,Quantity));
                 }
                 listView.getLayoutParams().height=382*listDetail1.size();
                 adater=new HistoryDetailAdater(DetailHistoryActivity.this,listDetail1);

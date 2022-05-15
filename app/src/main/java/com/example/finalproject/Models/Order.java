@@ -8,6 +8,7 @@ public class Order {
     String Status;
     String TimeOrder;
     double Total;
+    public Order(){}
     public Order(String Id,String Address,String Name,String Phone,String Status,String TimeOrder,double Total){
         this.Id=Id;
         this.Address=Address;
