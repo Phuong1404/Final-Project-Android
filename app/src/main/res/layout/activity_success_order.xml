@@ -32,30 +32,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Your order has been successfuully placed"
                 android:gravity="center"
-                android:textSize="20dp">
-            </TextView>
+                android:text="Your order has been successfully placed"
+                android:textSize="20dp"></TextView>
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="190dp">
+
             <TextView
                 android:layout_width="match_parent"
+                android:id="@+id/OrderAgain"
                 android:layout_height="60dp"
-                android:gravity="center"
-                android:text="let's order again"
-                android:background="@drawable/green_fill__rounded_color"
-                android:textColor="@color/white"
-                android:textSize="23dp"
-                android:textStyle="bold"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                ></TextView>
+                android:background="@drawable/green_fill__rounded_color"
+                android:gravity="center"
+                android:text="let's order again"
+                android:textColor="@color/white"
+                android:textSize="23dp"
+                android:textStyle="bold"></TextView>
         </RelativeLayout>
         
     </LinearLayout>

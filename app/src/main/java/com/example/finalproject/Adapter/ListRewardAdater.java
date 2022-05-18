@@ -18,6 +18,7 @@ import java.util.List;
 
 public class ListRewardAdater extends ArrayAdapter<Detail> {
     Context context;
+    View view;
     List<Detail> ListDetail;
     public ListRewardAdater(@NonNull Context context, List<Detail>datadetail){
         super(context, R.layout.order_item,datadetail);
@@ -25,10 +26,10 @@ public class ListRewardAdater extends ArrayAdapter<Detail> {
         this.ListDetail=datadetail;
     }
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.reward_item,null,true);
+            view= LayoutInflater.from(parent.getContext()).inflate(R.layout.reward_item,null,true);
+
         TextView name=view.findViewById(R.id.Name);
         TextView date=view.findViewById(R.id.date);
-
         name.setText(ListDetail.get(position).getProduct().getName());
         date.setText(String.valueOf(ListDetail.get(position).getDate()));
         return view;

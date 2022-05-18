@@ -50,9 +50,20 @@ public class FirebaseData {
     {
         database.getReference("Users").child(UserId).child("order").child(order.getId()).setValue(order);
     }
+    public void AddOrderTemp(String UserId, Order order)
+    {
+        database.getReference("Temp").child(UserId).child(order.getId()).setValue(order);
+    }
     public void AddOrderDetail1(String UserId, String OrderId, Detail1 detail1)
     {
         database.getReference("Users").child(UserId).child("order").child(OrderId).child(detail1.getId()).setValue(detail1);
+    }
+    public void AddOrderDetailTemp(String UserId, String OrderId, Detail1 detail1)
+    {
+        database.getReference("Temp").child(UserId).child(OrderId).child("detail").child(detail1.getId()).setValue(detail1);
+    }
+    public DatabaseReference GetOrderDetailTemp(String UserId, String OrderId){
+        return database.getReference("Temp").child(UserId).child(OrderId);
     }
     public void AddOrderDetail(String UserId, String OrderId, Detail detail)
     {
@@ -62,4 +73,17 @@ public class FirebaseData {
     {
         database.getReference("Users").child(UserId).child("card").child(CartId).removeValue();
     }
+    public void deleteTemp(String UserId)
+    {
+        database.getReference("Temp").child(UserId).removeValue();
+    }
+    public void AddDetail(String UserId,Detail detail)
+    {
+        database.getReference("Detail").child(UserId).child(detail.getId()).setValue(detail);
+    }
+    public void updataPoint(String Userid, int giftPoint,int Point){
+        database.getReference("Users").child(Userid).child("giftPoint").setValue(giftPoint);
+        database.getReference("Users").child(Userid).child("accumulatedPoint").setValue(Point);
+    }
 }
+

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.finalproject.Adapter.ListOrderAdater;
 import com.example.finalproject.Adapter.ListProductAdater;
@@ -118,9 +119,12 @@ public class MyOrder extends Fragment {
         placeorder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(listCart!=null)
+                if(listCart.size()>0)
                 {
                     AddOrder(user,listCart);
+                }
+                else{
+                    Toast.makeText(getActivity(),"No oke",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -146,12 +150,12 @@ public class MyOrder extends Fragment {
         Date date=new Date();
         String Id=getMd5(user.getAddress()+user.getName()+user.getPhoneNumber()+"Confirmation"+date.toString());
         Order order=new Order(Id,user.getAddress(),user.getName(),user.getPhoneNumber(),"Confirmation",new SimpleDateFormat("MM/dd/yyyy").format(date),Total);
-        data.AddOrder(mAuth.getCurrentUser().getUid(),order);
+        data.AddOrderTemp(mAuth.getCurrentUser().getUid(),order);
         for(Cart cart:listCart){
             String Id1=getMd5(cart.getProduct().toString()+Double.toString(cart.getQuantity())+cart.getOrderRequest()+Integer.toString(cart.getQuantity())+new Date().toString());
-            Detail1 detail1=new Detail1(Id1,cart.getProduct(), cart.getTotal(),cart.getQuantity(),cart.getOrderRequest());
-            data.AddOrderDetail1(mAuth.getCurrentUser().getUid(),Id,detail1);
-            data.deleteCart(mAuth.getCurrentUser().getUid(),cart.getId());
+            Detail1 detail1=new Detail1(Id1,cart.getProduct(), cart.getTotal(),cart.getQuantity(),cart.getOrderRequest(),cart.getId());
+            data.AddOrderDetailTemp(mAuth.getCurrentUser().getUid(),Id,detail1);
+            //data.deleteCart(mAuth.getCurrentUser().getUid(),cart.getId());
         }
         Intent I=new Intent(getActivity(), CheckoutActivity.class);
         I.putExtra("id",order.getId());

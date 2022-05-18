@@ -81,11 +81,12 @@ public class Rewards extends Fragment {
                     String date= (String) singleValue.get("date");
                     listDetail.add(new Detail(Id,product,date));
                 }
+                if (getActivity()!=null){
                 listView.getLayoutParams().height=350*listDetail.size();
                 adater=new ListRewardAdater(getActivity(),listDetail);
                 listView.setDivider(null);
                 listView.setAdapter(adater);
-
+                }
             }
 
             @Override

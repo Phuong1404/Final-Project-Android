@@ -6,16 +6,18 @@ public class Detail1 {
     String Id;
     Product product;
     double Total;
-    int Quanlity;
+    int Quantity;
     String OrderRequest;
+    String IdCart;
     public Detail1(){};
-    public Detail1(String Id,Product product,double total,int quanlity,String OrderRequest)
+    public Detail1(String Id,Product product,double total,int quanlity,String OrderRequest,String Idcart)
     {
         this.Id=Id;
         this.product=product;
         this.Total=total;
-        this.Quanlity=quanlity;
+        this.Quantity=quanlity;
         this.OrderRequest=OrderRequest;
+        this.IdCart=Idcart;
     }
 
     public Product getProduct() {
@@ -35,7 +37,7 @@ public class Detail1 {
     }
 
     public int getQuanlity() {
-        return Quanlity;
+        return Quantity;
     }
 
     public void setTotal(double total) {
@@ -46,8 +48,16 @@ public class Detail1 {
         return Total;
     }
 
+    public String getIdCart() {
+        return IdCart;
+    }
+
+    public void setIdCart(String idCart) {
+        IdCart = idCart;
+    }
+
     public void setQuanlity(int quanlity) {
-        Quanlity = quanlity;
+        Quantity = quanlity;
     }
     public String getOrderRequest() {
         return OrderRequest;

@@ -249,15 +249,17 @@
         android:layout_marginTop="12dp"
         android:layout_marginRight="12dp"
         android:layout_marginLeft="12dp">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:background="@drawable/green_fill__rounded_color"
+            android:gravity="center"
+            android:text="PLACE YOUR ORDER"
+            android:textColor="@color/white"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:text="PLACE YOUR ORDER"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:background="@drawable/green_fill__rounded_color"></TextView>
+            android:id="@+id/Accept"></TextView>
     </RelativeLayout></LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
