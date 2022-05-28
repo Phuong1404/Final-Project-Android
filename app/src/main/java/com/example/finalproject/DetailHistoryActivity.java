@@ -34,19 +34,19 @@ public class DetailHistoryActivity extends AppCompatActivity {
         FirebaseData data=new FirebaseData();
         listView=(ListView) findViewById(R.id.listview);
         listView.setEnabled(false);
-        data.GetDataHistoryDetail("User01","Order01").addValueEventListener(new ValueEventListener() {
+        data.GetDataHistoryDetail("wnj0aSad0NeogtgUCeipm15wgl73","cf445cd99249c383dc655c9819597815").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listDetail1.clear();
                 for(DataSnapshot ds:snapshot.getChildren()){
                     Map singleValue=(Map)ds.getValue();
                     String Id=ds.getKey();
-                    String Quantity= (String) singleValue.get("Quantity");
-                    String Total= (String) singleValue.get("Total");
+                    int Quantity=((Long) singleValue.get("quanlity")).intValue();
+                    double total=((Long) singleValue.get("total")).doubleValue();
                     Product product=ds.child("product").getValue(Product.class);
-                    //listDetail1.add(new Detail1(Id,product,Total,Quantity));
+                    listDetail1.add(new Detail1(Id,product,total,Quantity,"",""));
                 }
-                listView.getLayoutParams().height=382*listDetail1.size();
+                listView.getLayoutParams().height=200*listDetail1.size();
                 adater=new HistoryDetailAdater(DetailHistoryActivity.this,listDetail1);
                 listView.setDivider(null);
                 listView.setAdapter(adater);

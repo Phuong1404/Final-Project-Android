@@ -51,13 +51,15 @@ public class History extends Fragment {
         tabLayout=view.findViewById(R.id.tablayout);
         viewPager=view.findViewById(R.id.viewpager);
 
-        HistoryFragment historyFragment=new HistoryFragment();
-        OngoingFragment ongoingFragment=new OngoingFragment();
-        VPAdater vpAdater=new VPAdater(getActivity().getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        vpAdater.addFragment(historyFragment,"History");
-        vpAdater.addFragment(ongoingFragment,"ongoing");
-        viewPager.setAdapter(vpAdater);
-        tabLayout.setupWithViewPager(viewPager);
+        if(getActivity()!=null){
+            HistoryFragment historyFragment=new HistoryFragment();
+            OngoingFragment ongoingFragment=new OngoingFragment();
+            VPAdater vpAdater=new VPAdater(getActivity().getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+            vpAdater.addFragment(historyFragment,"History");
+            vpAdater.addFragment(ongoingFragment,"Ongoing");
+            viewPager.setAdapter(vpAdater);
+            tabLayout.setupWithViewPager(viewPager);
+        }
         BtnPre1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

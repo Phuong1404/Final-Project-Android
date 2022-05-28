@@ -18,6 +18,7 @@ import com.example.finalproject.Helper.FirebaseData;
 import com.example.finalproject.Models.Order;
 import com.example.finalproject.ProductDetailActivity;
 import com.example.finalproject.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -30,6 +31,7 @@ public class HistoryFragment extends Fragment {
     private View view;
     ListView listView;
     HistoryAdater historyAdater;
+    FirebaseAuth mAuth;
     public HistoryFragment() {
         // Required empty public constructor
     }
@@ -45,21 +47,22 @@ public class HistoryFragment extends Fragment {
             view = inflater.inflate(R.layout.fragment_history2, container, false);
         }
         listView=(ListView) view.findViewById(R.id.listview);
+        mAuth=FirebaseAuth.getInstance();
         List<Order> historylist = new ArrayList<>();
-        data.GetDataHistory("User01").addValueEventListener(new ValueEventListener() {
+        data.GetDataHistory(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 historylist.clear();
                 for(DataSnapshot ds:snapshot.getChildren()) {
                     Map singleValue = (Map) ds.getValue();
                     String Id=ds.getKey();
-                    String Name= (String) singleValue.get("Name");
-                    String Address= (String) singleValue.get("Address");
-                    String Phone= (String) singleValue.get("Phone");
-                    String Status= (String) singleValue.get("Status");
-                    String TimeOrder= (String) singleValue.get("TimeOrder");
-                    //double Total=((Long) singleValue.get("Total")).doubleValue();
-                    historylist.add(new Order(Id,Address,Name,Phone,Status,TimeOrder,2.3));
+                    String Name= (String) singleValue.get("name");
+                    String Address= (String) singleValue.get("address");
+                    String Phone= (String) singleValue.get("phone");
+                    String Status= (String) singleValue.get("status");
+                    String TimeOrder= (String) singleValue.get("timeOrder");
+                    double Total=((Long) singleValue.get("total")).doubleValue();
+                    historylist.add(new Order(Id,Address,Name,Phone,Status,TimeOrder,Total));
                 }
                 historyAdater=new HistoryAdater(getActivity(),historylist);
                 //listView.setDivider(null);

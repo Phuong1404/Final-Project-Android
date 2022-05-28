@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView ResetPass;
     TextView CreateAccount;
     EditText email,password;
+    RadioButton customer,admin;
     FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,10 @@ public class LoginActivity extends AppCompatActivity {
 
         email=(EditText)findViewById(R.id.email);
         password=(EditText)findViewById(R.id.password);
+        customer=findViewById(R.id.radiocus);
+        customer.setChecked(true);
+        admin=findViewById(R.id.radioadmin);
+        admin.setChecked(false);
         mAuth=FirebaseAuth.getInstance();
 
         ResetPass.setOnClickListener(new View.OnClickListener() {

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.finalproject.EditUserActivity;
 import com.example.finalproject.Helper.FirebaseData;
 import com.example.finalproject.MainActivity;
 import com.example.finalproject.Models.User;
@@ -60,9 +61,9 @@ public class Profile extends Fragment {
                 String Id1=snapshot.getKey();
                 String Name1= (String) singleValue.get("name");
                 String Phone1= (String) singleValue.get("phone");
-                //String Address1= (String) singleValue.get("address");
+                String Address1= (String) singleValue.get("address");
                 String Email1=(String) singleValue.get("email");
-                user=new User(Id1,Name1,"","",Email1,Phone1,0,0,"");
+                user=new User(Id1,Name1,"",Address1,Email1,Phone1,0,0,"");
 
 
                 Name.setText(user.getName());
@@ -89,7 +90,7 @@ public class Profile extends Fragment {
         menubar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).open();
+                startActivity(new Intent(getActivity(), EditUserActivity.class));
             }
         });
         return view;

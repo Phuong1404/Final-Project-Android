@@ -1,6 +1,7 @@
 package com.example.finalproject.Helper;
 
 import com.example.finalproject.Models.Cart;
+import com.example.finalproject.Models.Delivery;
 import com.example.finalproject.Models.Detail;
 import com.example.finalproject.Models.Detail1;
 import com.example.finalproject.Models.Order;
@@ -32,10 +33,10 @@ public class FirebaseData {
         return database.getReference("Products").child(ProductId);
     }
     public DatabaseReference GetDataHistory(String Username){
-        return database.getReference("Users").child(Username).child("Order");
+        return database.getReference("Users").child(Username).child("order");
     }
     public DatabaseReference GetDataHistoryDetail(String Username,String OrderId){
-        return database.getReference("Users").child(Username).child("order").child(OrderId).child("Detail");
+        return database.getReference("Users").child(Username).child("order").child(OrderId).child("detail");
     }
     public DatabaseReference GetDataOrder(String Username,String OrderId){
         return database.getReference("Users").child(Username).child("order").child(OrderId);
@@ -56,7 +57,7 @@ public class FirebaseData {
     }
     public void AddOrderDetail1(String UserId, String OrderId, Detail1 detail1)
     {
-        database.getReference("Users").child(UserId).child("order").child(OrderId).child(detail1.getId()).setValue(detail1);
+        database.getReference("Users").child(UserId).child("order").child(OrderId).child("detail").child(detail1.getId()).setValue(detail1);
     }
     public void AddOrderDetailTemp(String UserId, String OrderId, Detail1 detail1)
     {
@@ -84,6 +85,15 @@ public class FirebaseData {
     public void updataPoint(String Userid, int giftPoint,int Point){
         database.getReference("Users").child(Userid).child("giftPoint").setValue(giftPoint);
         database.getReference("Users").child(Userid).child("accumulatedPoint").setValue(Point);
+    }
+    public void updataProfile(String Userid, User user){
+        database.getReference("Users").child(Userid).child("name").setValue(user.getName());
+        database.getReference("Users").child(Userid).child("address").setValue(user.getAddress());
+        database.getReference("Users").child(Userid).child("email").setValue(user.getAddress());
+        database.getReference("Users").child(Userid).child("phone").setValue(user.getAddress());
+    }
+    public void AddDelivery(String Userid, Delivery delivery){
+        database.getReference("Users").child(Userid).child("delivery").setValue(delivery);
     }
 }
 

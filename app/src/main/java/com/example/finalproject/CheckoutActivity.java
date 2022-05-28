@@ -115,8 +115,9 @@ public class CheckoutActivity extends AppCompatActivity {
         int point=user.getAccumulatedPoint();
         for(Detail1 dt:listDetail){
             Detail1 detail1=new Detail1(dt.getId(),dt.getProduct(), dt.getTotal(),dt.getQuanlity(),dt.getOrderRequest(),dt.getIdCart());
-            data.AddOrderDetailTemp(mAuth.getCurrentUser().getUid(),Id,detail1);
+            data.AddOrderDetail1(mAuth.getCurrentUser().getUid(),Id,detail1);
             data.AddDetail(mAuth.getCurrentUser().getUid(),new Detail(dt.getId(),dt.getProduct(),new SimpleDateFormat("MM/dd/yyyy").format(date)));
+            data.deleteCart(mAuth.getCurrentUser().getUid(),dt.getIdCart());
             giftpoint=giftpoint+250;
         }
         data.updataPoint(mAuth.getCurrentUser().getUid(),giftpoint,point+1);

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Admin.ProductFragment">
+
+    <de.codecrafters.tableview.TableView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/table_data_view"
+        app:tableView_headerColor="@color/green_app"
+        app:tableView_columnCount="4">
+
+    </de.codecrafters.tableview.TableView>
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="300dp"
+        android:layout_marginBottom="10dp"
+        android:src="@color/green_app"
+        >
+
+    </ImageView>
+
+</FrameLayout>

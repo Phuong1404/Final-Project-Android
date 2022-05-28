@@ -18,6 +18,7 @@ import com.example.finalproject.DetailHistoryActivity;
 import com.example.finalproject.Helper.FirebaseData;
 import com.example.finalproject.Models.Order;
 import com.example.finalproject.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -31,6 +32,7 @@ public class OngoingFragment extends Fragment {
     private View view;
     ListView listView;
     OnGoingAdater onGoingAdater;
+    FirebaseAuth mAuth;
     public OngoingFragment() {
         // Required empty public constructor
     }
@@ -45,22 +47,23 @@ public class OngoingFragment extends Fragment {
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_ongoing, container, false);
         }
+        mAuth=FirebaseAuth.getInstance();
         listView=(ListView) view.findViewById(R.id.listview);
         List<Order> ongoinglist = new ArrayList<>();
-        data.GetDataHistory("User01").addValueEventListener(new ValueEventListener() {
+        data.GetDataHistory(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ongoinglist.clear();
                 for(DataSnapshot ds:snapshot.getChildren()) {
                     Map singleValue = (Map) ds.getValue();
                     String Id=ds.getKey();
-                    String Name= (String) singleValue.get("Name");
-                    String Address= (String) singleValue.get("Address");
-                    String Phone= (String) singleValue.get("Phone");
-                    String Status= (String) singleValue.get("Status");
-                    String TimeOrder= (String) singleValue.get("TimeOrder");
-                    //double Total=((Long) singleValue.get("Total")).doubleValue();
-                    ongoinglist.add(new Order(Id,Address,Name,Phone,Status,TimeOrder,2.3));
+                    String Name= (String) singleValue.get("name");
+                    String Address= (String) singleValue.get("address");
+                    String Phone= (String) singleValue.get("phone");
+                    String Status= (String) singleValue.get("status");
+                    String TimeOrder= (String) singleValue.get("timeOrder");
+                    double Total=((Long) singleValue.get("total")).doubleValue();
+                    ongoinglist.add(new Order(Id,Address,Name,Phone,Status,TimeOrder,Total));
                 }
                 onGoingAdater=new OnGoingAdater(getActivity(),ongoinglist);
                 //listView.setDivider(null);

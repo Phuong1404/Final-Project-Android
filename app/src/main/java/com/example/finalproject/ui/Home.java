@@ -3,19 +3,17 @@ package com.example.finalproject.ui;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.finalproject.AllProductActivity;
 import com.example.finalproject.LoginActivity;
 import com.example.finalproject.MainActivity;
+import com.example.finalproject.MainadminActivity;
 import com.example.finalproject.ProductDetailActivity;
 import com.example.finalproject.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -53,7 +51,7 @@ public class Home extends Fragment {
         AllProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(), AllProductActivity.class);
+                Intent i = new Intent(getActivity(), MainadminActivity.class);
                 startActivity(i);
             }
         });
