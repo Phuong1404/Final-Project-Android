@@ -55,13 +55,6 @@ public class Home extends Fragment {
                 startActivity(i);
             }
         });
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mAuth.signOut();
-                startActivity(new Intent(getActivity(), LoginActivity.class));
-            }
-        });
         menubar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,7 +67,7 @@ public class Home extends Fragment {
         int id=view.getId();
         if(id==R.id.item1){
             Intent intent=new Intent(getActivity(), ProductDetailActivity.class);
-            intent.putExtra("ProductId","Pro01");
+            intent.putExtra("id","34934230d43985fd511a4e678e31eda4");
         }
     }
 }

@@ -53,7 +53,7 @@ public class CategoryFragment2 extends Fragment {
                 for(DataSnapshot ds:snapshot.getChildren())
                 {
                     Product product=ds.getValue(Product.class);
-                    if(product.getCategory().getId().equals("Cate02"))
+                    if(product.getCategory().getId().equals("1"))
                     {
                         productList.add(ds.getValue(Product.class));
                     }

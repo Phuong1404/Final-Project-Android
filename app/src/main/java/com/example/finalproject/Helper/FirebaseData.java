@@ -5,6 +5,7 @@ import com.example.finalproject.Models.Delivery;
 import com.example.finalproject.Models.Detail;
 import com.example.finalproject.Models.Detail1;
 import com.example.finalproject.Models.Order;
+import com.example.finalproject.Models.Product;
 import com.example.finalproject.Models.User;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -15,8 +16,23 @@ public class FirebaseData {
     FirebaseDatabase database= FirebaseDatabase.getInstance(Default_Url);
     public DatabaseReference GetData()
     {
-
         return database.getReference("Products");
+    }
+    public DatabaseReference GetOneProduct(String Id)
+    {
+        return database.getReference("Products").child(Id);
+    }
+    public void AddProduct(Product product)
+    {
+        database.getReference("Products").child(product.getId()).setValue(product);
+    }
+    public void UpdateProduct(String Id,Product product)
+    {
+        database.getReference("Products").child(Id).setValue(product);
+    }
+    public void DeleteProduct(String Id)
+    {
+        database.getReference("Products").child(Id).removeValue();
     }
     public DatabaseReference GetDataCart(String Username)
     {

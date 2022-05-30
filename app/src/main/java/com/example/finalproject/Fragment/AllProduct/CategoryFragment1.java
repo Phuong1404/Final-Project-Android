@@ -58,7 +58,7 @@ public class CategoryFragment1 extends Fragment {
                 {
                     Map singleValue=(Map)ds.getValue();
                     Category Category=ds.child("Category").getValue(Category.class);
-                    if(Category.getId().equals("Cate01"))
+                    if(Category.getId().equals("0"))
                     {
                         String Id=ds.getKey();
                         String Name=(String) singleValue.get("Name");

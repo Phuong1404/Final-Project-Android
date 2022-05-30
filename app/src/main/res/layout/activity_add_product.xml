@@ -21,19 +21,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp">
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="230dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
-                        android:id="@+id/image"
-                        android:background="@drawable/boder_image"
-                        ></ImageView>
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="335dp"
-                    android:layout_marginTop="187dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:id="@+id/image"
+                    android:background="@drawable/boder_image"
+                    ></ImageView>
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="330dp"
+                    android:layout_marginTop="185dp"
                     android:id="@+id/chooseimage"
                     android:src="@drawable/ic_baseline_photo_camera_24">
                 </ImageView>
@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="140dp"
                     android:layout_marginRight="25dp"
-                    android:enabled="false"
+                    android:maxLines="1"
                     android:gravity="left">
 
                 </EditText>
@@ -82,7 +82,8 @@
                     android:layout_marginRight="25dp"
                     android:gravity="left"
                     android:id="@+id/price"
-                    android:enabled="false">
+                    android:maxLines="1"
+                    >
 
                 </EditText>
             </RelativeLayout>
@@ -105,8 +106,8 @@
                     android:layout_marginLeft="140dp"
                     android:layout_marginRight="25dp"
                     android:gravity="left"
-                    android:id="@+id/quantity"
-                    android:enabled="false">
+                    android:maxLines="1"
+                    android:id="@+id/quantity">
 
                 </EditText>
             </RelativeLayout>
@@ -132,8 +133,7 @@
                     android:layout_marginLeft="140dp"
                     android:layout_marginRight="25dp"
                     android:layout_marginTop="7dp"
-                    android:gravity="center"
-                    android:clickable="false"/>
+                    android:gravity="center" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -141,19 +141,17 @@
                 android:layout_marginTop="80dp">
 
                 <TextView
-                    android:id="@+id/update"
+                    android:id="@+id/add"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginLeft="25dp"
                     android:layout_marginRight="25dp"
                     android:background="@drawable/green_fill__rounded_color"
-                    android:enabled="false"
                     android:gravity="center"
-                    android:text="Update"
+                    android:text="Create"
                     android:textColor="@color/white"
                     android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:visibility="invisible"></TextView>
+                    android:textStyle="bold"></TextView>
             </RelativeLayout>
         </LinearLayout>
 

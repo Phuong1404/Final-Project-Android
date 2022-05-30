@@ -1,5 +1,7 @@
 package com.example.finalproject.Admin;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -9,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.finalproject.Helper.FirebaseData;
 import com.example.finalproject.Models.Category;
@@ -19,6 +22,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -30,7 +34,10 @@ import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 
 public class ProductFragment extends Fragment {
 
+    AlertDialog dialog;
+    AlertDialog.Builder builder;
     View view;
+    ImageView add;
     public ProductFragment() {
         // Required empty public constructor
     }
@@ -53,6 +60,9 @@ public class ProductFragment extends Fragment {
         }
         TableView table=view.findViewById(R.id.table_data_view);
 
+
+
+        add=view.findViewById(R.id.add);
         String[] Headers={"Name","Price","Category","Quality"};
         FirebaseData data=new FirebaseData();
         List<Product> productList=new ArrayList<>();
@@ -63,11 +73,12 @@ public class ProductFragment extends Fragment {
                 for(DataSnapshot ds:snapshot.getChildren())
                 {
                     Map singleValue=(Map)ds.getValue();
-                    String Name=(String) singleValue.get("Name");
-                    Category Category=ds.child("Category").getValue(Category.class);
-                    String Price=(String)singleValue.get("Price");
-                    String Quantity=(String)singleValue.get("Quantity");
-                    productList.add(new Product("",Name,Price,"",Quantity,"",Category));
+                    String Id=ds.getKey();
+                    String Name=(String) singleValue.get("name");
+                    Category Category=ds.child("category").getValue(Category.class);
+                    String Price=(String)singleValue.get("price");
+                    String Quantity=(String)singleValue.get("quantity");
+                    productList.add(new Product(Id,Name,Price,"",Quantity,"",Category));
                 }
                 if(productList.size()>0)
                 {
@@ -77,7 +88,7 @@ public class ProductFragment extends Fragment {
                         datatable[i][0]=p.getName();
                         datatable[i][1]=p.getPrice();
                         datatable[i][2]=p.getQuantity();
-                        datatable[i][3]=p.getCategory().getName();
+                        datatable[i][3]=p.getQuantity();
                     }
                     table.setHeaderAdapter(new SimpleTableHeaderAdapter(getActivity(),Headers));
                     table.setDataAdapter(new SimpleTableDataAdapter(getActivity(),datatable));
@@ -94,11 +105,18 @@ public class ProductFragment extends Fragment {
 
             }
         });
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(),AddProductActivity.class));
+            }
+        });
 
         table.addDataClickListener(new TableDataClickListener() {
             @Override
             public void onDataClicked(int rowIndex, Object clickedData) {
                 Intent i=new Intent(getActivity(),DetaiProActivity.class);
+                i.putExtra("Id",productList.get(rowIndex).getId());
                 startActivity(i);
             }
         });
@@ -106,7 +124,23 @@ public class ProductFragment extends Fragment {
         table.addDataLongClickListener(new TableDataLongClickListener() {
             @Override
             public boolean onDataLongClicked(int rowIndex, Object clickedData) {
-                return false;
+                builder=new AlertDialog.Builder(getActivity());
+                builder.setTitle("Are you sure you want to remove");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        data.DeleteProduct(productList.get(rowIndex).getId());
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                dialog=builder.create();
+                dialog.show();
+                return true;
             }
         });
         return view;

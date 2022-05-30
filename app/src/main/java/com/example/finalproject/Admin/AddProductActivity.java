@@ -6,8 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -26,47 +24,44 @@ import com.example.finalproject.Models.Product;
 import com.example.finalproject.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.File;
-import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
-public class DetaiProActivity extends AppCompatActivity {
+public class AddProductActivity extends AppCompatActivity {
+
+    ImageView chooseImage,image;
+    TextView add;
+    EditText Name,Price,Quanlity;
     private Spinner spnCategory;
-    ImageView edit,image,chooseimage;
-    EditText name,price,quanlity;
-    TextView btn;
-    public Uri imageUri;
     private FirebaseStorage storage;
     private StorageReference storageReference;
-    int CateId;
-    Category category1;
+    public Uri imageUri;
+    Category cate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detai_pro);
-        Intent intent=getIntent();
-        String Id=intent.getStringExtra("Id");
+        setContentView(R.layout.activity_add_product);
+
+        add=findViewById(R.id.add);
+        chooseImage=findViewById(R.id.chooseimage);
+        Name=findViewById(R.id.name);
+        Price=findViewById(R.id.price);
+        Quanlity=findViewById(R.id.quantity);
+        image=findViewById(R.id.image);
+
         FirebaseData data=new FirebaseData();
-        storage=FirebaseStorage.getInstance();
+        storage= FirebaseStorage.getInstance();
         storageReference=storage.getReference();
-        if(Id!=null){
             spnCategory = (Spinner) findViewById(R.id.category);
             List<String> category=new ArrayList<>();
             category.add("Category 1");
@@ -80,8 +75,7 @@ public class DetaiProActivity extends AppCompatActivity {
 
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    CateId=i;
-                    category1=new Category(Integer.toString(i),spnCategory.getSelectedItem().toString());
+                    cate=new Category(Integer.toString(i),spnCategory.getSelectedItem().toString());
                 }
 
                 @Override
@@ -89,35 +83,26 @@ public class DetaiProActivity extends AppCompatActivity {
 
                 }
             });
-            spnCategory.setEnabled(false);
-            image=findViewById(R.id.image);
-            chooseimage=findViewById(R.id.chooseimage);
-            edit=findViewById(R.id.menubar);
-            name=findViewById(R.id.name);
-            price=findViewById(R.id.price);
-            quanlity=findViewById(R.id.quantity);
-            btn=findViewById(R.id.update);
-
-            btn.setOnClickListener(new View.OnClickListener() {
+            add.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String Name1=name.getText().toString();
-                    String Price1=price.getText().toString();
-                    String Quan=quanlity.getText().toString();
+                    String Name1=Name.getText().toString();
+                    String Price1=Price.getText().toString();
+                    String Quan=Quanlity.getText().toString();
                     String Id=getMd5(Name1+Price1+Quan+new Date().toString());
                     final String randomKey= UUID.randomUUID().toString();
                     if(TextUtils.isEmpty(Name1)){
-                        name.setError("Name cannot be empty");
-                        name.requestFocus();
+                        Name.setError("Name cannot be empty");
+                        Name.requestFocus();
                     }else if(TextUtils.isEmpty(Price1)){
-                        price.setError("Price cannot be empty");
-                        price.requestFocus();
+                        Price.setError("Price cannot be empty");
+                        Price.requestFocus();
                     }else if(TextUtils.isEmpty(Quan)){
-                        quanlity.setError("Quanlity cannot be empty");
-                        quanlity.requestFocus();
+                        Quanlity.setError("Quanlity cannot be empty");
+                        Quanlity.requestFocus();
                     }
                     else{
-                        Product product=new Product(Id,Name1,Price1,"2000",Quan,"gs://androiproject-a386e.appspot.com/image/"+randomKey,category1);
+                        Product product=new Product(Id,Name1,Price1,"2000",Quan,"gs://androiproject-a386e.appspot.com/image/"+randomKey,cate);
                         data.AddProduct(product);
                         if(imageUri!=null)
                         {
@@ -125,69 +110,18 @@ public class DetaiProActivity extends AppCompatActivity {
                         }
                         else
                         {
-                            Toast.makeText(DetaiProActivity.this,"you need to import pictures",Toast.LENGTH_LONG).show();
+                            Toast.makeText(AddProductActivity.this,"you need to import pictures",Toast.LENGTH_LONG).show();
                         }
                     }
                 }
             });
+            chooseImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                chooseImage();
+            }
+        });
 
-            data.GetOneProduct(Id).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    Map singleValue=(Map)snapshot.getValue();
-                    String Name=(String) singleValue.get("name");
-                    Category Category=snapshot.child("category").getValue(Category.class);
-                    String Price=(String)singleValue.get("price");
-                    String Quantity=(String)singleValue.get("quantity");
-                    String Image=(String)singleValue.get("image");
-                    CateId=Integer.parseInt(Category.getId());
-                    name.setText(Name);
-                    price.setText(Price);
-                    quanlity.setText(Quantity);
-                    spnCategory.setSelection(CateId);
-                    loadimage(Image);
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-            edit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    name.setEnabled(true);
-                    price.setEnabled(true);
-                    quanlity.setEnabled(true);
-                    spnCategory.setEnabled(true);
-                    btn.setEnabled(true);
-                    btn.setVisibility(View.VISIBLE);
-                }
-            });
-            chooseimage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    chooseImage();
-                }
-            });
-        }
-
-    }
-    private void loadimage(String uri)
-    {
-        StorageReference httpsReference = storage.getReferenceFromUrl(uri);
-        try {
-            File localFile= File.createTempFile("tempfile","png");
-            httpsReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    Bitmap bitmap= BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                    image.setImageBitmap(bitmap);
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
     private void chooseImage(){
         Intent intentImage=new Intent();
@@ -219,12 +153,12 @@ public class DetaiProActivity extends AppCompatActivity {
                 //Snackbar.make(findViewById(R.id.content),"ImageUploaded",Snackbar.LENGTH_LONG).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        pd.dismiss();
-                        Toast.makeText(getApplication(),"Failed To Upload",Toast.LENGTH_LONG).show();
-                    }
-                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                pd.dismiss();
+                Toast.makeText(getApplication(),"Failed To Upload",Toast.LENGTH_LONG).show();
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
                 double progessPercent=(100.00*snapshot.getBytesTransferred()/snapshot.getTotalByteCount());

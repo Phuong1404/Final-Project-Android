@@ -12,6 +12,9 @@
         android:theme="@style/Theme.FinalProject"
         tools:replace="android:label">
         <activity
+            android:name=".Admin.AddProductActivity"
+            android:exported="false" />
+        <activity
             android:name=".Admin.DetaiProActivity"
             android:exported="false" />
         <activity
