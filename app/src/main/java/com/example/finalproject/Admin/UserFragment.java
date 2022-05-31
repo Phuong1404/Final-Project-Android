@@ -16,32 +16,30 @@ import android.widget.ImageView;
 import com.example.finalproject.Helper.FirebaseData;
 import com.example.finalproject.Models.Category;
 import com.example.finalproject.Models.Product;
+import com.example.finalproject.Models.User;
 import com.example.finalproject.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import de.codecrafters.tableview.TableView;
-import de.codecrafters.tableview.listeners.TableDataClickListener;
 import de.codecrafters.tableview.listeners.TableDataLongClickListener;
 import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 
-public class ProductFragment extends Fragment {
+public class UserFragment extends Fragment {
 
     AlertDialog dialog;
     AlertDialog.Builder builder;
     View view;
     ImageView add;
-    public ProductFragment() {
+    public UserFragment() {
         // Required empty public constructor
     }
-
 
 
     @Override
@@ -53,42 +51,41 @@ public class ProductFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         if(view==null)
         {
-            view=inflater.inflate(R.layout.fragment_product, container, false);
+            view=inflater.inflate(R.layout.fragment_user, container, false);
         }
         TableView table=view.findViewById(R.id.table_data_view);
 
 
 
         add=view.findViewById(R.id.add);
-        String[] Headers={"Name","Price","Category","Quality"};
+        String[] Headers={"Name","Email","Address","Phone"};
         FirebaseData data=new FirebaseData();
-        List<Product> productList=new ArrayList<>();
-        data.GetData().addValueEventListener(new ValueEventListener() {
+        List<User> userList=new ArrayList<>();
+        data.GetListUser().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                productList.clear();
+                userList.clear();
                 for(DataSnapshot ds:snapshot.getChildren())
                 {
                     Map singleValue=(Map)ds.getValue();
                     String Id=ds.getKey();
                     String Name=(String) singleValue.get("name");
-                    Category Category=ds.child("category").getValue(Category.class);
-                    String Price=(String)singleValue.get("price");
-                    String Quantity=(String)singleValue.get("quantity");
-                    productList.add(new Product(Id,Name,Price,"",Quantity,"",Category));
+                    String Email=(String)singleValue.get("email");
+                    String Phone=(String)singleValue.get("phoneNumber");
+                    String Address=(String)singleValue.get("address");
+                    userList.add(new User(Id,Name,"",Address,Email,Phone,0,0,""));
                 }
-                if(productList.size()>0)
+                if(userList.size()>0)
                 {
-                    String[][] datatable=new String[productList.size()][4];
-                    for(int i=0;i<productList.size();i++){
-                        Product p=productList.get(i);
+                    String[][] datatable=new String[userList.size()][4];
+                    for(int i=0;i<userList.size();i++){
+                        User p=userList.get(i);
                         datatable[i][0]=p.getName();
-                        datatable[i][1]=p.getPrice();
-                        datatable[i][2]=p.getQuantity();
-                        datatable[i][3]=p.getCategory().getName();
+                        datatable[i][1]=p.getEmail();
+                        datatable[i][2]=p.getAddress();
+                        datatable[i][3]=p.getPhoneNumber();
                     }
                     table.setHeaderAdapter(new SimpleTableHeaderAdapter(getActivity(),Headers));
                     table.setDataAdapter(new SimpleTableDataAdapter(getActivity(),datatable));
@@ -105,21 +102,7 @@ public class ProductFragment extends Fragment {
 
             }
         });
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(),AddProductActivity.class));
-            }
-        });
 
-        table.addDataClickListener(new TableDataClickListener() {
-            @Override
-            public void onDataClicked(int rowIndex, Object clickedData) {
-                Intent i=new Intent(getActivity(),DetaiProActivity.class);
-                i.putExtra("Id",productList.get(rowIndex).getId());
-                startActivity(i);
-            }
-        });
 
         table.addDataLongClickListener(new TableDataLongClickListener() {
             @Override
@@ -129,7 +112,7 @@ public class ProductFragment extends Fragment {
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        data.DeleteProduct(productList.get(rowIndex).getId());
+                        data.DeleteUser(userList.get(rowIndex).getId());
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -143,7 +126,7 @@ public class ProductFragment extends Fragment {
                 return true;
             }
         });
+
         return view;
     }
-
 }

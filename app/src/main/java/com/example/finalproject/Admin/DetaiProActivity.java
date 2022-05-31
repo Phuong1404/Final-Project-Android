@@ -57,6 +57,7 @@ public class DetaiProActivity extends AppCompatActivity {
     private StorageReference storageReference;
     int CateId;
     Category category1;
+    String img1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,8 +105,8 @@ public class DetaiProActivity extends AppCompatActivity {
                     String Name1=name.getText().toString();
                     String Price1=price.getText().toString();
                     String Quan=quanlity.getText().toString();
-                    String Id=getMd5(Name1+Price1+Quan+new Date().toString());
                     final String randomKey= UUID.randomUUID().toString();
+                    img1="gs://androiproject-a386e.appspot.com/image/"+randomKey;
                     if(TextUtils.isEmpty(Name1)){
                         name.setError("Name cannot be empty");
                         name.requestFocus();
@@ -117,9 +118,9 @@ public class DetaiProActivity extends AppCompatActivity {
                         quanlity.requestFocus();
                     }
                     else{
-                        Product product=new Product(Id,Name1,Price1,"2000",Quan,"gs://androiproject-a386e.appspot.com/image/"+randomKey,category1);
-                        data.AddProduct(product);
-                        if(imageUri!=null)
+                        Product product=new Product(Id,Name1,Price1,"2000",Quan,img1,category1);
+                        data.UpdateProduct(Id,product);
+                        if(img1!=null)
                         {
                             uploadPicture(randomKey);
                         }
@@ -140,6 +141,7 @@ public class DetaiProActivity extends AppCompatActivity {
                     String Price=(String)singleValue.get("price");
                     String Quantity=(String)singleValue.get("quantity");
                     String Image=(String)singleValue.get("image");
+                    img1=Image;
                     CateId=Integer.parseInt(Category.getId());
                     name.setText(Name);
                     price.setText(Price);

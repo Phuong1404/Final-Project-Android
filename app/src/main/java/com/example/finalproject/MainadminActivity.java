@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import com.example.finalproject.Admin.HomeFragment;
 import com.example.finalproject.Admin.ProductFragment;
+import com.example.finalproject.Admin.UserFragment;
 import com.example.finalproject.databinding.ActivityMainadminBinding;
 
 public class MainadminActivity extends AppCompatActivity {
@@ -26,10 +27,13 @@ public class MainadminActivity extends AppCompatActivity {
                 case R.id.home:
                     relaceFragment(new HomeFragment());
                     break;
-                case R.id.profile:
+                case R.id.product:
                     relaceFragment(new ProductFragment());
                     break;
-                case R.id.setting:
+                case R.id.user:
+                    relaceFragment(new UserFragment());
+                    break;
+                case R.id.logout:
                     break;
             }
             return true;

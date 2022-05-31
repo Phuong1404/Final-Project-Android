@@ -34,6 +34,17 @@ public class FirebaseData {
     {
         database.getReference("Products").child(Id).removeValue();
     }
+    public DatabaseReference GetListUser()
+    {
+        return database.getReference("Users");
+    }
+    public void DeleteUser(String Id){
+        database.getReference("Users").child(Id).removeValue();
+    }
+    public void UpdateUser(String Id,User user)
+    {
+        database.getReference("Users").child(Id).setValue(user);
+    }
     public DatabaseReference GetDataCart(String Username)
     {
         return database.getReference("Users").child(Username).child("card");
@@ -105,8 +116,8 @@ public class FirebaseData {
     public void updataProfile(String Userid, User user){
         database.getReference("Users").child(Userid).child("name").setValue(user.getName());
         database.getReference("Users").child(Userid).child("address").setValue(user.getAddress());
-        database.getReference("Users").child(Userid).child("email").setValue(user.getAddress());
-        database.getReference("Users").child(Userid).child("phone").setValue(user.getAddress());
+        database.getReference("Users").child(Userid).child("email").setValue(user.getEmail());
+        database.getReference("Users").child(Userid).child("phone").setValue(user.getPhoneNumber());
     }
     public void AddDelivery(String Userid, Delivery delivery){
         database.getReference("Users").child(Userid).child("delivery").setValue(delivery);

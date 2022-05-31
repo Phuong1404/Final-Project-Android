@@ -1,5 +1,6 @@
 package com.example.finalproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,12 +14,18 @@ import com.example.finalproject.Helper.FirebaseData;
 import com.example.finalproject.Models.User;
 import com.example.finalproject.ui.Profile;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Map;
 
 public class EditUserActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     TextView update;
     EditText name,address,email,phone;
+    int Point_1,Point_2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +36,31 @@ public class EditUserActivity extends AppCompatActivity {
         phone=findViewById(R.id.phone);
         update=findViewById(R.id.update);
         mAuth=FirebaseAuth.getInstance();
+        FirebaseData data=new FirebaseData();
+        data.GetDataUser(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Map singleValue=(Map)snapshot.getValue();
+                String Id1=snapshot.getKey();
+                String Name1= (String) singleValue.get("name");
+                String Phone1= (String) singleValue.get("phone");
+                String Address1= (String) singleValue.get("address");
+                String Email1=(String) singleValue.get("email");
+                int GiftPoint= ((Long) singleValue.get("giftPoint")).intValue();
+                int Point1=((Long) singleValue.get("accumulatedPoint")).intValue();
+                Point_1=GiftPoint;
+                Point_2=Point1;
+                name.setText(Name1);
+                address.setText(Address1);
+                email.setText(Email1);
+                phone.setText(Phone1);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,9 +91,9 @@ public class EditUserActivity extends AppCompatActivity {
         }
         else{
             FirebaseData data=new FirebaseData();
-            User user=new User("",Name,"",Address,Email,Phone,0,0,"");
+            User user=new User(mAuth.getCurrentUser().getUid(),Name,"",Address,Email,Phone,Point_1,Point_2,"");
             data.updataProfile(mAuth.getCurrentUser().getUid(),user);
-            startActivity(new Intent(EditUserActivity.this, Profile.class));
+            //startActivity(new Intent(EditUserActivity.this, Profile.class));
         }
     }
 }

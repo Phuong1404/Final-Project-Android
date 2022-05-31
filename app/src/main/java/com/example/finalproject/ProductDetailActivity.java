@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,11 +16,17 @@ import com.example.finalproject.Helper.FirebaseData;
 import com.example.finalproject.Models.Cart;
 import com.example.finalproject.Models.Detail;
 import com.example.finalproject.Models.Product;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -26,13 +34,16 @@ import java.util.Date;
 
 public class ProductDetailActivity extends AppCompatActivity {
     String Size,Roas,Grind,Ice;
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
     double Total;
     int Quanlity;
     Product product;
     FirebaseAuth mAuth;
     FirebaseData data;
     TextView Quan1,Name,total,AddCard;
-    ImageView SizeM,SizeL,SizeXL,SmallFire,MediumFire,BigFire,GrindSmall,GrindBig,NoneIce,HalfIce,FullIce;
+    ImageView SizeM,SizeL,SizeXL,SmallFire,MediumFire,BigFire,GrindSmall,GrindBig,NoneIce,HalfIce,FullIce,imageCoffee;
+    String ImageLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +65,13 @@ public class ProductDetailActivity extends AppCompatActivity {
         HalfIce=(ImageView)findViewById(R.id.halfice);
         FullIce=(ImageView)findViewById(R.id.fullice);
         AddCard=(TextView)findViewById(R.id.addcard);
+        imageCoffee=(ImageView)findViewById(R.id.imgcoffe);
         //endregion
         mAuth=FirebaseAuth.getInstance();
         Size="M";Roas="Small";Grind="Small";Ice="Half";Quanlity=1;
         data=new FirebaseData();
+        storage=FirebaseStorage.getInstance();
+        storageReference=storage.getReference();
         Intent intent = getIntent();
         String id1=intent.getStringExtra("id");
         data.GetDataProduct(id1).addValueEventListener(new ValueEventListener() {
@@ -69,6 +83,8 @@ public class ProductDetailActivity extends AppCompatActivity {
                 Total=Double.parseDouble(data1.getPrice());
                 Name.setText(data1.getName());
                 total.setText("$ "+data1.getPrice());
+                ImageLink=data1.getImage();
+                loadimage(ImageLink);
 
             }
 
@@ -283,5 +299,20 @@ public class ProductDetailActivity extends AppCompatActivity {
     public void AddToCart(Cart card){
         data.AddCard(mAuth.getCurrentUser().getUid(),card);
     }
-
+    private void loadimage(String uri)
+    {
+        StorageReference httpsReference = storage.getReferenceFromUrl(uri);
+        try {
+            File localFile= File.createTempFile("tempfile","png");
+            httpsReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                    Bitmap bitmap= BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                    imageCoffee.setImageBitmap(bitmap);
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

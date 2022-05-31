@@ -63,11 +63,4 @@ public class Home extends Fragment {
         });
         return view;
     }
-    public void OpenDetail(View view){
-        int id=view.getId();
-        if(id==R.id.item1){
-            Intent intent=new Intent(getActivity(), ProductDetailActivity.class);
-            intent.putExtra("id","34934230d43985fd511a4e678e31eda4");
-        }
-    }
 }

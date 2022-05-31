@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -72,5 +73,13 @@ public class MainActivity extends AppCompatActivity {
     public void Logout(MenuItem item) {
         mAuth.signOut();
         startActivity(new Intent(MainActivity.this, LoginActivity.class));
+    }
+    public void OpenDetail(View view){
+        int id=view.getId();
+        if(id==R.id.item1){
+            Intent intent=new Intent(MainActivity.this, ProductDetailActivity.class);
+            intent.putExtra("id","34934230d43985fd511a4e678e31eda4");
+            startActivity(intent);
+        }
     }
 }
