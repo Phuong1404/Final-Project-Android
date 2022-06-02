@@ -1,5 +1,7 @@
 package com.example.finalproject.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -9,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -16,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.finalproject.Adapter.ListOrderAdater;
 import com.example.finalproject.Adapter.ListProductAdater;
+import com.example.finalproject.Admin.DetailUserActivity;
 import com.example.finalproject.CheckoutActivity;
 import com.example.finalproject.Helper.FirebaseData;
 import com.example.finalproject.MainActivity;
@@ -51,6 +55,8 @@ public class MyOrder extends Fragment {
     FirebaseAuth mAuth;
     FirebaseData data;
     User user;
+    AlertDialog dialog;
+    AlertDialog.Builder builder;
     public MyOrder() {
     }
     @Override
@@ -142,6 +148,29 @@ public class MyOrder extends Fragment {
             @Override
             public void onClick(View view) {
                 ((MainActivity)getActivity()).open();
+            }
+        });
+        //------------------------------------------------------------------------------------------
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                builder=new AlertDialog.Builder(getActivity());
+                builder.setTitle("Are you sure you want to remove the product from the cart?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        data.deleteCart(mAuth.getCurrentUser().getUid(),listCart.get(i).getId());
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                dialog=builder.create();
+                dialog.show();
+                return true;
             }
         });
         return view;

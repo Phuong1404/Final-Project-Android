@@ -32,20 +32,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="John Smith"
+                android:id="@+id/name"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textSize="32dp"
                 android:layout_marginTop="22dp"
                 android:textColor="@color/black">
             </TextView>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="08323232432"
-                android:gravity="center"
                 android:layout_marginTop="65dp"
-                android:textSize="15dp">
-            </TextView>
+                android:gravity="center"
+                android:text="08323232432"
+                android:id="@+id/phone"
+                android:textSize="15dp"></TextView>
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
@@ -58,14 +60,16 @@
                 android:text="DELIVERY ADDRESS"
                 android:layout_marginLeft="50dp"
                 android:textSize="15dp"></TextView>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="An Khe, Gia Lai, Viet Nam"
-                android:textStyle="bold"
-                android:textSize="13.5dp"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="25dp"
-                android:layout_marginLeft="50dp"></TextView>
+                android:id="@+id/address"
+                android:text="An Khe, Gia Lai, Viet Nam"
+                android:textSize="13.5dp"
+                android:textStyle="bold"></TextView>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -73,6 +77,7 @@
                 android:layout_marginLeft="320dp"
                 android:layout_marginTop="14.5dp"
                 android:text="CHANGE"
+                android:id="@+id/changeaddress"
                 android:textColor="@color/green_app"
                 android:textSize="14dp"
                 android:textStyle="bold"></TextView>
@@ -105,21 +110,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Visa card : 1838234"
+            android:text="Payment on delivery"
             android:textStyle="bold"
             android:textSize="13.5dp"
             android:layout_marginTop="25dp"
             android:layout_marginLeft="50dp"></TextView>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="320dp"
-            android:layout_marginTop="14.5dp"
-            android:text="CHANGE"
-            android:textColor="@color/green_app"
-            android:textSize="14dp"
-            android:textStyle="bold"></TextView>
 
         <ImageView
             android:layout_width="25dp"

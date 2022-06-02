@@ -90,9 +90,7 @@ public class FirebaseData {
     {
         database.getReference("Temp").child(UserId).child(OrderId).child("detail").child(detail1.getId()).setValue(detail1);
     }
-    public DatabaseReference GetOrderDetailTemp(String UserId, String OrderId){
-        return database.getReference("Temp").child(UserId).child(OrderId);
-    }
+
     public void deleteCart(String UserId,String CartId)
     {
         database.getReference("Users").child(UserId).child("card").child(CartId).removeValue();
@@ -121,10 +119,46 @@ public class FirebaseData {
     public void DeleteOrder(String Userid, String OrderId)
     {
         database.getReference("Users").child(Userid).child("order").child(OrderId).removeValue();
+        database.getReference("Orders").child(OrderId).removeValue();
     }
     public void ChangeRole(String Userid)
     {
-        database.getReference("Users").child(Userid).child("role").setValue("Admin");
+        database.getReference("Users").child(Userid).child("role").setValue("Admin123");
+    }
+    public DatabaseReference DataOrder()
+    {
+        return database.getReference("Orders");
+    }
+    public void AcceptOrder(String UserId,String OrderId)
+    {
+        database.getReference("Users").child(UserId).child("order").child(OrderId).child("status").setValue("Delivery");
+        database.getReference("Orders").child(OrderId).removeValue();
+    }
+    public void CancelOrder(String UserId,String OrderId)
+    {
+        database.getReference("Users").child(UserId).child("order").child(OrderId).child("status").setValue("Was canceled");
+        database.getReference("Orders").child(OrderId).removeValue();
+    }
+    public DatabaseReference GetOneData(String OrderId)
+    {
+        return database.getReference("Orders").child(OrderId);
+    }
+    public DatabaseReference GetOrderDetailTemp(String UserId, String OrderId){
+        return database.getReference("Temp").child(UserId).child(OrderId);
+    }
+    public void addOrderAccept(Order order)
+    {
+        database.getReference("Orders").child(order.getId()).setValue(order);
+    }
+    public void addDetailAccept(String OrderId,Detail1 detail1)
+    {
+        database.getReference("Orders").child(OrderId).child("detail").child(detail1.getId()).setValue(detail1);
+    }
+    public void EditTemp(String UserId,String OrderId,String Name,String Phone,String Address)
+    {
+        database.getReference("Temp").child(UserId).child(OrderId).child("name").setValue(Name);
+        database.getReference("Temp").child(UserId).child(OrderId).child("phone").setValue(Phone);
+        database.getReference("Temp").child(UserId).child(OrderId).child("address").setValue(Address);
     }
 }
 

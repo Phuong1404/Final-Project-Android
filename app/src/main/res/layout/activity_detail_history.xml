@@ -101,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="25dp"
-                    android:text="Visa card : 1838234"
+                    android:text="Payment on delivery"
                     android:textSize="14dp"
                     android:textStyle="bold"></TextView>
 
@@ -168,7 +168,8 @@
                         android:text="$132.34"
                         android:textColor="@color/black"
                         android:textSize="15dp"
-                        android:textStyle="bold"></TextView>
+                        android:textStyle="bold"
+                        android:id="@+id/subtotal"></TextView>
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -186,7 +187,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="15dp"
                         android:textColor="@color/black"
-                        android:text="$32.34"
+                        android:text="$0"
                         android:textStyle="bold"
                         android:gravity="right"
                         android:layout_marginRight="12dp">
@@ -209,7 +210,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="12dp"
                         android:gravity="right"
-                        android:text="$3.34"
+                        android:text="$0"
                         android:textColor="@color/black"
                         android:textSize="15dp"
                         android:textStyle="bold"></TextView>
@@ -226,16 +227,17 @@
                         android:text="TOTAL"
                         android:textStyle="bold">
                     </TextView>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="20dp"
-                        android:textColor="@color/black"
-                        android:text="$3.34"
-                        android:textStyle="bold"
+                        android:layout_marginRight="12dp"
                         android:gravity="right"
-                        android:layout_marginRight="12dp">
-                    </TextView>
+                        android:text="$3.34"
+                        android:id="@+id/total"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold"></TextView>
                 </RelativeLayout>
             </RelativeLayout>
 

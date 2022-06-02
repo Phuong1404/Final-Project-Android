@@ -32,12 +32,13 @@ import java.util.Map;
 
 
 public class CheckoutActivity extends AppCompatActivity {
-    TextView price,total,Accept;
+    TextView price,total,Accept,name,phone,address,change;
     FirebaseAuth mAuth;
     List<Detail1> detailList;
-    User user;
     double Total;
     FirebaseData data;
+    User user;
+    Order order;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +46,10 @@ public class CheckoutActivity extends AppCompatActivity {
         price=(TextView) findViewById(R.id.price);
         total=(TextView) findViewById(R.id.total);
         Accept=(TextView)findViewById(R.id.Accept);
+        name=findViewById(R.id.name);
+        phone=findViewById(R.id.phone);
+        address=findViewById(R.id.address);
         mAuth=FirebaseAuth.getInstance();
-        user=new User();
         detailList=new ArrayList<>();
         Intent intent = getIntent();
         String id1=intent.getStringExtra("id");
@@ -75,7 +78,7 @@ public class CheckoutActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 detailList.clear();
-               Order order= snapshot.getValue(Order.class);
+               order= snapshot.getValue(Order.class);
                Total=0;
                for(DataSnapshot ds:snapshot.child("detail").getChildren())
                {
@@ -84,13 +87,16 @@ public class CheckoutActivity extends AppCompatActivity {
                    String OrderRequest=(String)singleValue.get("orderRequest");
                    Product product= ds.child("product").getValue(Product.class);
                    double total=((Long) singleValue.get("total")).doubleValue();
-                   String CartId=(String)singleValue.get("orderRequest");
+                   String CartId=(String)singleValue.get("idCart");
                    Total=Total+total;
                    detailList.add(new Detail1(ds.getKey(),product,total,Quantity,OrderRequest,CartId));
                }
                 if(order!=null){
                     price.setText("$"+Double.toString(order.getTotal()));
                     total.setText("$"+Double.toString(order.getTotal()));
+                    name.setText(order.getName());
+                    address.setText(order.getAddress());
+                    phone.setText(order.getPhone()) ;
                 }
             }
 
@@ -102,20 +108,30 @@ public class CheckoutActivity extends AppCompatActivity {
         Accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AddOrder(user,detailList);
+                AddOrder(order,detailList);
+            }
+        });
+        change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(CheckoutActivity.this,ChangeAddressActivity.class);
+                i.putExtra("OrderId",id1);
+                startActivity(i);
             }
         });
     }
-    public void AddOrder(User user, List<Detail1>listDetail){
+    public void AddOrder(Order order1, List<Detail1>listDetail){
         Date date=new Date();
-        String Id=getMd5(user.getAddress()+user.getName()+user.getPhoneNumber()+"Confirmation"+date.toString());
-        Order order=new Order(Id,user.getAddress(),user.getName(),user.getPhoneNumber(),"Confirmation",new SimpleDateFormat("MM/dd/yyyy").format(date),Total);
+        String Id=getMd5(order1.getAddress()+order1.getName()+order1.getPhone()+"Confirmation"+date.toString());
+        Order order=new Order(Id,order1.getAddress(),order1.getName(),order1.getPhone(),"Confirmation",new SimpleDateFormat("MM/dd/yyyy").format(date),Total);
         data.AddOrder(mAuth.getCurrentUser().getUid(),order);
+        data.addOrderAccept(order);
         int giftpoint=user.getGiftPoint();
         int point=user.getAccumulatedPoint();
         for(Detail1 dt:listDetail){
             Detail1 detail1=new Detail1(dt.getId(),dt.getProduct(), dt.getTotal(),dt.getQuanlity(),dt.getOrderRequest(),dt.getIdCart());
             data.AddOrderDetail1(mAuth.getCurrentUser().getUid(),Id,detail1);
+            data.addDetailAccept(order.getId(),detail1);
             data.AddDetail(mAuth.getCurrentUser().getUid(),new Detail(dt.getId(),dt.getProduct(),new SimpleDateFormat("MM/dd/yyyy").format(date)));
             data.deleteCart(mAuth.getCurrentUser().getUid(),dt.getIdCart());
             giftpoint=giftpoint+250;
@@ -125,6 +141,7 @@ public class CheckoutActivity extends AppCompatActivity {
         startActivity(new Intent(CheckoutActivity.this,SuccessOrderActivity.class));
 
     }
+
     static String getMd5(String input)
     {
         try {

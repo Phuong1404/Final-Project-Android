@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
+import com.example.finalproject.Admin.AcceptOrderFragment;
 import com.example.finalproject.Admin.HomeFragment;
 import com.example.finalproject.Admin.ProductFragment;
 import com.example.finalproject.Admin.UserFragment;
@@ -34,6 +35,7 @@ public class MainadminActivity extends AppCompatActivity {
                     relaceFragment(new UserFragment());
                     break;
                 case R.id.logout:
+                    relaceFragment(new AcceptOrderFragment());
                     break;
             }
             return true;

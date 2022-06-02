@@ -12,6 +12,12 @@
         android:theme="@style/Theme.FinalProject"
         tools:replace="android:label">
         <activity
+            android:name=".ChangeAddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.DetailOrderAcceptActivity"
+            android:exported="false" />
+        <activity
             android:name=".Admin.DetailUserActivity"
             android:exported="false" />
         <activity

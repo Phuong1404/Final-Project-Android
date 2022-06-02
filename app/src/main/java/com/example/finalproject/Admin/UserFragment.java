@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 import de.codecrafters.tableview.TableView;
+import de.codecrafters.tableview.listeners.TableDataClickListener;
 import de.codecrafters.tableview.listeners.TableDataLongClickListener;
 import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
@@ -104,6 +105,12 @@ public class UserFragment extends Fragment {
         });
 
 
+        table.addDataClickListener(new TableDataClickListener() {
+            @Override
+            public void onDataClicked(int rowIndex, Object clickedData) {
+                startActivity(new Intent(getActivity(),DetailUserActivity.class));
+            }
+        });
         table.addDataLongClickListener(new TableDataLongClickListener() {
             @Override
             public boolean onDataLongClicked(int rowIndex, Object clickedData) {

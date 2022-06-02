@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.finalproject.Adapter.HistoryDetailAdater;
 import com.example.finalproject.Helper.FirebaseData;
@@ -28,6 +29,7 @@ public class DetailHistoryActivity extends AppCompatActivity {
     HistoryDetailAdater adater;
     ListView listView;
     FirebaseAuth mAuth;
+    Double Total;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,10 +45,13 @@ public class DetailHistoryActivity extends AppCompatActivity {
         }
         Intent intent=getIntent();
         String Idbill= intent.getStringExtra("id");
+        TextView total1=findViewById(R.id.total);
+        TextView subtotal1=findViewById(R.id.subtotal);
         data.GetDataHistoryDetail(mAuth.getCurrentUser().getUid(),Idbill).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listDetail1.clear();
+                Total=0.0;
                 for(DataSnapshot ds:snapshot.getChildren()){
                     Map singleValue=(Map)ds.getValue();
                     String Id=ds.getKey();
@@ -54,11 +59,14 @@ public class DetailHistoryActivity extends AppCompatActivity {
                     double total=((Long) singleValue.get("total")).doubleValue();
                     Product product=ds.child("product").getValue(Product.class);
                     listDetail1.add(new Detail1(Id,product,total,Quantity,"",""));
+                    Total=Total+total;
                 }
                 listView.getLayoutParams().height=200*listDetail1.size();
                 adater=new HistoryDetailAdater(DetailHistoryActivity.this,listDetail1);
                 listView.setDivider(null);
                 listView.setAdapter(adater);
+                subtotal1.setText("$"+Total);
+                total1.setText("$"+Total);
             }
 
             @Override
