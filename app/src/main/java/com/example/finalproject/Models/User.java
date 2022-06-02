@@ -10,11 +10,11 @@ public class User {
     int GiftPoint;
     int AccumulatedPoint;
     String Notification;
-
+    String Role;
     public User() {
     }
 
-    public User(String Id, String Name, String BirthDay, String Address, String Email, String PhoneNumber, int GiftPoint, int AccumulatedPoint,String Notification) {
+    public User(String Id, String Name, String BirthDay, String Address, String Email, String PhoneNumber, int GiftPoint, int AccumulatedPoint,String Notification,String Role) {
         this.Id = Id;
         this.Name = Name;
         this.BirthDay = BirthDay;
@@ -24,6 +24,7 @@ public class User {
         this.GiftPoint = GiftPoint;
         this.AccumulatedPoint = AccumulatedPoint;
         this.Notification=Notification;
+        this.Role=Role;
     }
 
     public String getId() {
@@ -96,5 +97,13 @@ public class User {
 
     public void setNotification(String notification) {
         Notification = notification;
+    }
+
+    public String getRole() {
+        return Role;
+    }
+
+    public void setRole(String role) {
+        Role = role;
     }
 }

@@ -93,10 +93,6 @@ public class FirebaseData {
     public DatabaseReference GetOrderDetailTemp(String UserId, String OrderId){
         return database.getReference("Temp").child(UserId).child(OrderId);
     }
-    public void AddOrderDetail(String UserId, String OrderId, Detail detail)
-    {
-        database.getReference("Detail").child(UserId).child(detail.getId()).setValue(detail);
-    }
     public void deleteCart(String UserId,String CartId)
     {
         database.getReference("Users").child(UserId).child("card").child(CartId).removeValue();
@@ -121,6 +117,14 @@ public class FirebaseData {
     }
     public void AddDelivery(String Userid, Delivery delivery){
         database.getReference("Users").child(Userid).child("delivery").setValue(delivery);
+    }
+    public void DeleteOrder(String Userid, String OrderId)
+    {
+        database.getReference("Users").child(Userid).child("order").child(OrderId).removeValue();
+    }
+    public void ChangeRole(String Userid)
+    {
+        database.getReference("Users").child(Userid).child("role").setValue("Admin");
     }
 }
 

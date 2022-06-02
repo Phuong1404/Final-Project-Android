@@ -63,7 +63,7 @@ public class Profile extends Fragment {
                 String Phone1= (String) singleValue.get("phone");
                 String Address1= (String) singleValue.get("address");
                 String Email1=(String) singleValue.get("email");
-                user=new User(Id1,Name1,"",Address1,Email1,Phone1,0,0,"");
+                user=new User(Id1,Name1,"",Address1,Email1,Phone1,0,0,"","");
 
 
                 Name.setText(user.getName());

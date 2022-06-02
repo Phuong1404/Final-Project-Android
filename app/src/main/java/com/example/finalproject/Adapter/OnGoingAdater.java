@@ -11,9 +11,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.finalproject.Helper.FirebaseData;
 import com.example.finalproject.Models.Order;
 import com.example.finalproject.ProductDetailActivity;
 import com.example.finalproject.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
@@ -21,6 +23,8 @@ public class OnGoingAdater extends ArrayAdapter<Order> {
     Context context;
     List<Order> orderList;
     TextView Btn;
+    FirebaseAuth mAuth;
+    FirebaseData data;
     public OnGoingAdater(@NonNull Context context, List<Order>dataOrder) {
         super(context, R.layout.ongoing_item,dataOrder);
         this.context=context;
@@ -39,10 +43,13 @@ public class OnGoingAdater extends ArrayAdapter<Order> {
         Address.setText(orderList.get(position).getAddress());
         Total.setText(Double.toString(orderList.get(position).getTotal()));
         //-----------------------------------------------------------------
+        mAuth= FirebaseAuth.getInstance();
+        data=new FirebaseData();
         Btn=(TextView)view.findViewById(R.id.BtnCancel);
         Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                data.DeleteOrder(mAuth.getCurrentUser().getUid(),orderList.get(position).getId());
             }
         });
         //-----------------------------------------------------------------

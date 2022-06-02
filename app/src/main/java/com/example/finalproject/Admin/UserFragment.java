@@ -75,7 +75,7 @@ public class UserFragment extends Fragment {
                     String Email=(String)singleValue.get("email");
                     String Phone=(String)singleValue.get("phoneNumber");
                     String Address=(String)singleValue.get("address");
-                    userList.add(new User(Id,Name,"",Address,Email,Phone,0,0,""));
+                    userList.add(new User(Id,Name,"",Address,Email,Phone,0,0,"",""));
                 }
                 if(userList.size()>0)
                 {

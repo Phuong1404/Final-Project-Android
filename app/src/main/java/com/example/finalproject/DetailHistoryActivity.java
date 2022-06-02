@@ -14,6 +14,7 @@ import com.example.finalproject.Helper.FirebaseData;
 import com.example.finalproject.Models.Cart;
 import com.example.finalproject.Models.Detail1;
 import com.example.finalproject.Models.Product;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -26,6 +27,7 @@ public class DetailHistoryActivity extends AppCompatActivity {
 
     HistoryDetailAdater adater;
     ListView listView;
+    FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,8 +35,15 @@ public class DetailHistoryActivity extends AppCompatActivity {
         List<Detail1> listDetail1=new ArrayList<>();
         FirebaseData data=new FirebaseData();
         listView=(ListView) findViewById(R.id.listview);
+        mAuth=FirebaseAuth.getInstance();
         listView.setEnabled(false);
-        data.GetDataHistoryDetail("wnj0aSad0NeogtgUCeipm15wgl73","cf445cd99249c383dc655c9819597815").addValueEventListener(new ValueEventListener() {
+        if(mAuth.getCurrentUser().getUid()==null)
+        {
+            startActivity(new Intent(DetailHistoryActivity.this,LoginActivity.class));
+        }
+        Intent intent=getIntent();
+        String Idbill= intent.getStringExtra("id");
+        data.GetDataHistoryDetail(mAuth.getCurrentUser().getUid(),Idbill).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listDetail1.clear();

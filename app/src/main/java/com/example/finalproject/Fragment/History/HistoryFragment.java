@@ -55,14 +55,20 @@ public class HistoryFragment extends Fragment {
                 historylist.clear();
                 for(DataSnapshot ds:snapshot.getChildren()) {
                     Map singleValue = (Map) ds.getValue();
-                    String Id=ds.getKey();
-                    String Name= (String) singleValue.get("name");
-                    String Address= (String) singleValue.get("address");
-                    String Phone= (String) singleValue.get("phone");
+
                     String Status= (String) singleValue.get("status");
-                    String TimeOrder= (String) singleValue.get("timeOrder");
-                    double Total=((Long) singleValue.get("total")).doubleValue();
-                    historylist.add(new Order(Id,Address,Name,Phone,Status,TimeOrder,Total));
+
+                    if(Status.equals("Delivery"))
+                    {
+                        String Id=ds.getKey();
+                        String Name= (String) singleValue.get("name");
+                        String Address= (String) singleValue.get("address");
+                        String Phone= (String) singleValue.get("phone");
+                        String TimeOrder= (String) singleValue.get("timeOrder");
+                        double Total=((Long) singleValue.get("total")).doubleValue();
+                        historylist.add(new Order(Id,Address,Name,Phone,Status,TimeOrder,Total));
+                    }
+
                 }
                 historyAdater=new HistoryAdater(getActivity(),historylist);
                 //listView.setDivider(null);
@@ -71,7 +77,7 @@ public class HistoryFragment extends Fragment {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         Intent intent=new Intent(getActivity(), DetailHistoryActivity.class);
-                        //intent.putExtra("id",productList.get(i).getId());
+                        intent.putExtra("id",historylist.get(i).getId());
                         startActivity(intent);
                     }
                 });

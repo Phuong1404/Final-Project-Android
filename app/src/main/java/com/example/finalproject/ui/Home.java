@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.finalproject.AllProductActivity;
 import com.example.finalproject.LoginActivity;
 import com.example.finalproject.MainActivity;
 import com.example.finalproject.MainadminActivity;
@@ -51,7 +52,7 @@ public class Home extends Fragment {
         AllProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(), MainadminActivity.class);
+                Intent i = new Intent(getActivity(), AllProductActivity.class);
                 startActivity(i);
             }
         });

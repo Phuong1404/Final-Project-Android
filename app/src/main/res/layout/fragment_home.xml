@@ -88,38 +88,201 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="70dp"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="235dp"
-                            android:layout_height="250dp"
-                            android:layout_marginStart="28dp"
-                            android:background="@drawable/green_fill__rounded_color"></TextView>
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="330dp"
+                            android:gravity="bottom">
 
-                        <TextView
-                            android:layout_width="235dp"
-                            android:layout_height="250dp"
-                            android:layout_marginStart="28dp"
-                            android:background="@drawable/green_fill__rounded_color"></TextView>
+                            <TextView
+                                android:layout_width="235dp"
+                                android:layout_height="250dp"
+                                android:layout_marginStart="28dp"
+                                android:background="@drawable/green_fill__rounded_color"></TextView>
 
-                        <TextView
-                            android:layout_width="235dp"
-                            android:layout_height="250dp"
-                            android:layout_marginStart="28dp"
-                            android:background="@drawable/green_fill__rounded_color"></TextView>
+                            <ImageView
 
-                        <TextView
-                            android:layout_width="235dp"
-                            android:layout_height="250dp"
-                            android:layout_marginStart="28dp"
-                            android:background="@drawable/green_fill__rounded_color"></TextView>
+                                android:layout_width="210dp"
+                                android:layout_height="210dp"
+                                android:src="@drawable/pic1"
+                                android:translationX="55dp"
+                                android:translationY="-70dp"></ImageView>
 
-                        <TextView
-                            android:layout_width="235dp"
-                            android:layout_height="250dp"
-                            android:layout_marginStart="28dp"
-                            android:background="@drawable/green_fill__rounded_color"></TextView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="50dp"
+                                android:layout_marginTop="140dp"
+                                android:text="Creamy Ice Coffee"
+                                android:textColor="@color/white"
+                                android:textSize="21dp"
+                                android:textStyle="bold"></TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="50dp"
+                                android:layout_marginTop="185dp"
+                                android:text="$5.8"
+                                android:textColor="@color/white"
+                                android:textSize="28dp"
+                                android:textStyle="bold"></TextView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="$9.9"
+                                android:textSize="21dp"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="120dp"
+                                android:layout_marginTop="190.5dp"
+                                android:textColor="#DFDFDE">
+                            </TextView>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="330dp"
+                            android:gravity="bottom">
+
+                            <TextView
+                                android:layout_width="235dp"
+                                android:layout_height="250dp"
+                                android:layout_marginStart="28dp"
+                                android:background="@drawable/green_fill__rounded_color"></TextView>
+
+                            <ImageView
+
+                                android:layout_width="210dp"
+                                android:layout_height="210dp"
+                                android:src="@drawable/pic2"
+                                android:translationX="20dp"
+                                android:translationY="-70dp"></ImageView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="50dp"
+                                android:layout_marginTop="140dp"
+                                android:text="Creamy Ice Coffee"
+                                android:textColor="@color/white"
+                                android:textSize="21dp"
+                                android:textStyle="bold"></TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="50dp"
+                                android:layout_marginTop="185dp"
+                                android:text="$5.8"
+                                android:textColor="@color/white"
+                                android:textSize="28dp"
+                                android:textStyle="bold"></TextView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="$9.9"
+                                android:textSize="21dp"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="120dp"
+                                android:layout_marginTop="190.5dp"
+                                android:textColor="#DFDFDE">
+                            </TextView>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="330dp"
+                            android:gravity="bottom">
+
+                            <TextView
+                                android:layout_width="235dp"
+                                android:layout_height="250dp"
+                                android:layout_marginStart="28dp"
+                                android:background="@drawable/green_fill__rounded_color"></TextView>
+
+                            <ImageView
+
+                                android:layout_width="210dp"
+                                android:layout_height="210dp"
+                                android:src="@drawable/pic1"
+                                android:translationX="55dp"
+                                android:translationY="-70dp"></ImageView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="50dp"
+                                android:layout_marginTop="140dp"
+                                android:text="Creamy Ice Coffee"
+                                android:textColor="@color/white"
+                                android:textSize="21dp"
+                                android:textStyle="bold"></TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="50dp"
+                                android:layout_marginTop="185dp"
+                                android:text="$5.8"
+                                android:textColor="@color/white"
+                                android:textSize="28dp"
+                                android:textStyle="bold"></TextView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="$9.9"
+                                android:textSize="21dp"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="120dp"
+                                android:layout_marginTop="190.5dp"
+                                android:textColor="#DFDFDE">
+                            </TextView>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="330dp"
+                            android:gravity="bottom">
+
+                            <TextView
+                                android:layout_width="235dp"
+                                android:layout_height="250dp"
+                                android:layout_marginStart="28dp"
+                                android:background="@drawable/green_fill__rounded_color"></TextView>
+
+                            <ImageView
+
+                                android:layout_width="210dp"
+                                android:layout_height="210dp"
+                                android:src="@drawable/pic2"
+                                android:translationX="20dp"
+                                android:translationY="-70dp"></ImageView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="50dp"
+                                android:layout_marginTop="140dp"
+                                android:text="Creamy Ice Coffee"
+                                android:textColor="@color/white"
+                                android:textSize="21dp"
+                                android:textStyle="bold"></TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="50dp"
+                                android:layout_marginTop="185dp"
+                                android:text="$5.8"
+                                android:textColor="@color/white"
+                                android:textSize="28dp"
+                                android:textStyle="bold"></TextView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="$9.9"
+                                android:textSize="21dp"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="120dp"
+                                android:layout_marginTop="190.5dp"
+                                android:textColor="#DFDFDE">
+                            </TextView>
+                        </RelativeLayout>
                     </LinearLayout>
                 </HorizontalScrollView>
             </RelativeLayout>
@@ -140,8 +303,8 @@
                 <HorizontalScrollView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:scrollbars="none"
-                    android:layout_marginRight="28dp">
+                    android:layout_marginRight="28dp"
+                    android:scrollbars="none">
 
                     <LinearLayout
                         android:layout_width="wrap_content"

@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
-                        User user=new User(mAuth.getCurrentUser().getUid(),Name,"","",Email,"",0,0,"");
+                        User user=new User(mAuth.getCurrentUser().getUid(),Name,"","",Email,"",0,0,"","User");
                         data.CreateNewUser(user);
                         Toast.makeText(RegisterActivity.this,"User registered successfully",Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(RegisterActivity.this,LoginActivity.class));

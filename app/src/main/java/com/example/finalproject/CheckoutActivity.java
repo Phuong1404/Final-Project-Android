@@ -62,7 +62,7 @@ public class CheckoutActivity extends AppCompatActivity {
                 String Email1=(String) singleValue.get("email");
                 int GiftPoint= ((Long) singleValue.get("giftPoint")).intValue();
                 int Point1=((Long) singleValue.get("accumulatedPoint")).intValue();
-                user=new User(Id1,Name1,"","",Email1,Phone1,GiftPoint,Point1,"");
+                user=new User(Id1,Name1,"","",Email1,Phone1,GiftPoint,Point1,"","");
             }
 
             @Override

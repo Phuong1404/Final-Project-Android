@@ -71,16 +71,16 @@
                 android:layout_marginTop="1dp"
                 android:src="@drawable/ic_location"
                 app:tint="@color/green_app"></ImageView>
+
             <TextView
-                android:layout_marginLeft="38dp"
+                android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/address"
+                android:layout_marginLeft="38dp"
                 android:text="An Khe, Gia Lai"
                 android:textColor="@color/green_app"
                 android:textSize="17dp"
-                android:textStyle="bold">
-            </TextView>
+                android:textStyle="bold"></TextView>
         </RelativeLayout>
         </RelativeLayout>
     <RelativeLayout

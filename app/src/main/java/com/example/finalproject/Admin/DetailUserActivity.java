@@ -1,18 +1,17 @@
-package com.example.finalproject;
+package com.example.finalproject.Admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.finalproject.Helper.FirebaseData;
-import com.example.finalproject.Models.User;
-import com.example.finalproject.ui.Profile;
+import com.example.finalproject.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,21 +19,22 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Map;
 
-public class EditUserActivity extends AppCompatActivity {
+public class DetailUserActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
-    TextView update;
     EditText name,address,email,phone;
-    int Point_1,Point_2;
+    TextView update;
+    AlertDialog dialog;
+    AlertDialog.Builder builder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_user);
+        setContentView(R.layout.activity_detail_user);
         name=findViewById(R.id.name);
         address=findViewById(R.id.address);
         email=findViewById(R.id.email);
         phone=findViewById(R.id.phone);
-        update=findViewById(R.id.update);
+        update=findViewById(R.id.changerole);
         mAuth=FirebaseAuth.getInstance();
         FirebaseData data=new FirebaseData();
         data.GetDataUser(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
@@ -46,10 +46,6 @@ public class EditUserActivity extends AppCompatActivity {
                 String Phone1= (String) singleValue.get("phone");
                 String Address1= (String) singleValue.get("address");
                 String Email1=(String) singleValue.get("email");
-                int GiftPoint= ((Long) singleValue.get("giftPoint")).intValue();
-                int Point1=((Long) singleValue.get("accumulatedPoint")).intValue();
-                Point_1=GiftPoint;
-                Point_2=Point1;
                 name.setText(Name1);
                 address.setText(Address1);
                 email.setText(Email1);
@@ -64,36 +60,23 @@ public class EditUserActivity extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateProfile();
+                builder=new AlertDialog.Builder(DetailUserActivity.this);
+                builder.setTitle("Are you sure you want to set admin rights for this user");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        data.ChangeRole(mAuth.getCurrentUser().getUid());
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                dialog=builder.create();
+                dialog.show();
             }
         });
-    }
-    private void updateProfile(){
-        String Name=name.getText().toString();
-        String Address=address.getText().toString();
-        String Email=email.getText().toString();
-        String Phone=phone.getText().toString();
-        if(TextUtils.isEmpty(Name)){
-            name.setError("Name cannot be empty");
-            name.requestFocus();
-        }
-        else if(TextUtils.isEmpty(Address)){
-            address.setError("Address cannot be empty");
-            address.requestFocus();
-        }
-        else if(TextUtils.isEmpty(Email)){
-            email.setError("Email cannot be empty");
-            email.requestFocus();
-        }
-        else if(TextUtils.isEmpty(Phone)){
-            phone.setError("Phone cannot be empty");
-            phone.requestFocus();
-        }
-        else{
-            FirebaseData data=new FirebaseData();
-            User user=new User(mAuth.getCurrentUser().getUid(),Name,"",Address,Email,Phone,Point_1,Point_2,"","");
-            data.updataProfile(mAuth.getCurrentUser().getUid(),user);
-            //startActivity(new Intent(EditUserActivity.this, Profile.class));
-        }
     }
 }
