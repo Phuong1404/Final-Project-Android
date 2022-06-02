@@ -54,6 +54,8 @@ public class CheckoutActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String id1=intent.getStringExtra("id");
         data= new FirebaseData();
+        TextView title=findViewById(R.id.title);
+        title.setText("Checkout");
         data.GetDataUser(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

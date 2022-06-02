@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.finalproject.Adapter.AcceptAdater;
 import com.example.finalproject.Adapter.HistoryAdater;
@@ -48,6 +49,8 @@ public class AcceptOrderFragment extends Fragment {
         listView=(ListView) view.findViewById(R.id.listview);
         mAuth=FirebaseAuth.getInstance();
         List<Order> acceptlist = new ArrayList<>();
+        TextView title=view.findViewById(R.id.title);
+        title.setText("Orders");
         data.DataOrder().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

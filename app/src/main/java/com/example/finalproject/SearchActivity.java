@@ -24,7 +24,6 @@ public class SearchActivity extends AppCompatActivity {
     ListView listView;
     TextView keyword;
     String Key;
-    List<Product> productList;
     ListProductAdater listProductAdater;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +34,7 @@ public class SearchActivity extends AppCompatActivity {
         FirebaseData data=new FirebaseData();
         Intent intent=getIntent();
         Key=intent.getStringExtra("keyword");
+        List<Product> productList=new ArrayList<>();
         if(Key!=null) {
 
 
@@ -44,23 +44,24 @@ public class SearchActivity extends AppCompatActivity {
                     productList.clear();
                     for (DataSnapshot ds : snapshot.getChildren()) {
                         Map singleValue = (Map) ds.getValue();
-                        String Name = (String) singleValue.get("Name");
+                        String Name = (String) singleValue.get("name");
                         if (Name.contains(Key)) {
                             String Id = ds.getKey();
-                            String Price = (String) singleValue.get("Price");
-                            String Price_Point = (String) singleValue.get("Price_Point");
-                            String Quantity = (String) singleValue.get("Quantity");
-                            String Image = (String) singleValue.get("Image");
-                            Category Category = ds.child("Category").getValue(Category.class);
+                            String Price = (String) singleValue.get("price");
+                            String Price_Point = (String) singleValue.get("price_Point");
+                            String Quantity = (String) singleValue.get("quantity");
+                            String Image = (String) singleValue.get("image");
+                            Category Category = ds.child("category").getValue(Category.class);
                             productList.add(new Product(Id, Name, Price, Price_Point, Quantity, Image, Category));
                         }
                     }
-                    listProductAdater = new ListProductAdater(SearchActivity.this, productList);
-                    listView.setDivider(null);
-                    listView.setAdapter(listProductAdater);
+
                     if(productList.size()>0)
                     {
                         keyword.setText("Search results for : "+Key);
+                        listProductAdater = new ListProductAdater(SearchActivity.this, productList);
+                        listView.setDivider(null);
+                        listView.setAdapter(listProductAdater);
                     }
                     else
                     {

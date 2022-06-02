@@ -16,6 +16,7 @@ import com.example.finalproject.DetailHistoryActivity;
 import com.example.finalproject.Helper.FirebaseData;
 import com.example.finalproject.LoginActivity;
 import com.example.finalproject.Models.Detail1;
+import com.example.finalproject.Models.Order;
 import com.example.finalproject.Models.Product;
 import com.example.finalproject.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,6 +36,7 @@ public class DetailOrderAcceptActivity extends AppCompatActivity {
     TextView total1;
     TextView subtotal1;
     TextView Accept, Cancel;
+    TextView name,phone,address;
     Double Total;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +57,16 @@ public class DetailOrderAcceptActivity extends AppCompatActivity {
         subtotal1=findViewById(R.id.subtotal);
         Accept=findViewById(R.id.accept);
         Cancel=findViewById(R.id.cancel);
+        name=findViewById(R.id.name);
+        phone=findViewById(R.id.phone);
+        address=findViewById(R.id.address);
+
         data.GetOneData(Idbill).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listDetail1.clear();
                 Total=0.0;
+                    Order order=snapshot.getValue(Order.class);
                     for(DataSnapshot ds:snapshot.child("detail").getChildren())
                     {
                         Map singleValue=(Map)ds.getValue();
@@ -76,6 +83,12 @@ public class DetailOrderAcceptActivity extends AppCompatActivity {
                 listView.setAdapter(adater);
                 subtotal1.setText("$"+Total);
                 total1.setText("$"+Total);
+                if(order!=null)
+                {
+                    phone.setText(order.getPhone());
+                    name.setText(order.getName());
+                    address.setText(order.getAddress());
+                }
             }
 
             @Override

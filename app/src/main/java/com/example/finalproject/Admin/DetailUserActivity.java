@@ -36,6 +36,8 @@ public class DetailUserActivity extends AppCompatActivity {
         phone=findViewById(R.id.phone);
         update=findViewById(R.id.changerole);
         mAuth=FirebaseAuth.getInstance();
+        TextView title=findViewById(R.id.title);
+        title.setText("Detail User");
         FirebaseData data=new FirebaseData();
         data.GetDataUser(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override

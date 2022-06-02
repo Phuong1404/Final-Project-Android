@@ -77,6 +77,9 @@ public class MyOrder extends Fragment {
         placeorder=(TextView)view.findViewById(R.id.placeorder);
         mAuth=FirebaseAuth.getInstance();
         //------------------------------------------------------------------------------------------
+        TextView title=view.findViewById(R.id.title);
+        title.setText("My Order");
+        //------------------------------------------------------------------------------------------
         data.GetDataCart(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

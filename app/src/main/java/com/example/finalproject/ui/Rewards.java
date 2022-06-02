@@ -54,6 +54,8 @@ public class Rewards extends Fragment {
         if(view==null){
             view=inflater.inflate(R.layout.fragment_rewards, container, false);
         }
+        TextView title=view.findViewById(R.id.title);
+        title.setText("My Reward");
         FirebaseData data=new FirebaseData();
         List<Detail> listDetail=new ArrayList<>();
         //region Declare

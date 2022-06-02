@@ -44,6 +44,7 @@
                     android:layout_height="45dp"
                     android:layout_marginLeft="275dp"
                     android:layout_marginTop="35dp"
+                    android:id="@+id/cart"
                     android:src="@drawable/shoppingbag"></ImageView>
 
                 <ImageView
@@ -63,18 +64,21 @@
                 android:layout_marginRight="28dp">
 
                 <EditText
+                    android:id="@+id/searchtext"
                     android:layout_width="match_parent"
                     android:layout_height="65dp"
                     android:background="@drawable/edit_fill__rounded_color"
                     android:hint="Search beverages of foods"
                     android:maxLines="1"
-                    android:paddingLeft="25dp"></EditText>
+                    android:paddingLeft="25dp"
+                    android:singleLine="true"></EditText>
 
                 <ImageView
                     android:layout_width="35dp"
                     android:layout_height="25dp"
                     android:layout_marginLeft="285dp"
                     android:layout_marginTop="20dp"
+                    android:id="@+id/search"
                     android:src="@drawable/iconsearch"></ImageView>
             </RelativeLayout>
             <RelativeLayout

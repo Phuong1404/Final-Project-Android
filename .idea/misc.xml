@@ -35,7 +35,7 @@
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/activity_deliver.xml" value="0.20512820512820512" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/activity_detai_pro.xml" value="0.264" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/activity_detail_history.xml" value="0.3308931185944363" />
-        <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/activity_detail_order_accept.xml" value="0.1" />
+        <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/activity_detail_order_accept.xml" value="0.264" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/activity_detail_pactivity.xml" value="0.1" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/activity_detail_product_admin.xml" value="0.19230769230769232" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/activity_detail_user.xml" value="0.176" />
@@ -65,7 +65,7 @@
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/fragment_home2.xml" value="0.264" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/fragment_my_order.xml" value="0.264" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/fragment_ongoing.xml" value="0.3870967741935484" />
-        <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/fragment_product.xml" value="0.2" />
+        <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/fragment_product.xml" value="0.1" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/fragment_profile.xml" value="0.176" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/fragment_rewards.xml" value="0.4304932735426009" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/fragment_user.xml" value="0.20512820512820512" />
@@ -78,7 +78,7 @@
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/order_item.xml" value="0.25" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/product_item.xml" value="0.4" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/reward_item.xml" value="0.264" />
-        <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/tool_bar.xml" value="0.1" />
+        <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/tool_bar.xml" value="0.536" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/layout/welcome_slide1.xml" value="0.25" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/menu/activity_main_drawer.xml" value="0.72" />
         <entry key="..\:/Android/Android_Studio/FinalProject/app/src/main/res/menu/bottom_menu.xml" value="0.4" />

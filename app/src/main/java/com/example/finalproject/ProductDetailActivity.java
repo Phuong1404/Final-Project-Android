@@ -74,6 +74,8 @@ public class ProductDetailActivity extends AppCompatActivity {
         storageReference=storage.getReference();
         Intent intent = getIntent();
         String id1=intent.getStringExtra("id");
+        TextView title=findViewById(R.id.title);
+        title.setText("Product Detail");
         data.GetDataProduct(id1).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

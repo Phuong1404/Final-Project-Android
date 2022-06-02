@@ -33,6 +33,8 @@ public class ChangeAddressActivity extends AppCompatActivity {
         String Email=email.getText().toString();
         String Phone=phone.getText().toString();
 
+        TextView title=findViewById(R.id.title);
+        title.setText("Change Address");
         if(TextUtils.isEmpty(Name)){
             name.setError("Name cannot be empty");
             name.requestFocus();

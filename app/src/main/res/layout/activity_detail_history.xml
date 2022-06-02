@@ -38,6 +38,7 @@
                     android:layout_marginTop="22dp"
                     android:gravity="center"
                     android:text="John Smith"
+                    android:id="@+id/name"
                     android:textColor="@color/black"
                     android:textSize="32dp"
                     android:textStyle="bold"></TextView>
@@ -45,6 +46,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="08323232432"
+                    android:id="@+id/phone"
                     android:gravity="center"
                     android:layout_marginTop="65dp"
                     android:textSize="15dp">
@@ -65,6 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="An Khe, Gia Lai, Viet Nam"
+                    android:id="@+id/address"
                     android:textStyle="bold"
                     android:textSize="14dp"
                     android:layout_marginTop="25dp"

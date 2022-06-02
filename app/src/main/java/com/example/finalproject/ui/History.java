@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.finalproject.Adapter.VPAdater;
 import com.example.finalproject.AllProductActivity;
@@ -45,7 +46,8 @@ public class History extends Fragment {
         if(view==null){
             view=inflater.inflate(R.layout.fragment_history, container, false);
         }
-
+        TextView title=view.findViewById(R.id.title);
+        title.setText("My History");
         BtnPre1=view.findViewById(R.id.BtnPre1);
         menubar=view.findViewById(R.id.menubar);
         tabLayout=view.findViewById(R.id.tablayout);

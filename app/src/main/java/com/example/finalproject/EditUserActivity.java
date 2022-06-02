@@ -37,6 +37,8 @@ public class EditUserActivity extends AppCompatActivity {
         update=findViewById(R.id.update);
         mAuth=FirebaseAuth.getInstance();
         FirebaseData data=new FirebaseData();
+        TextView title=findViewById(R.id.title);
+        title.setText("Edit Profile");
         data.GetDataUser(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

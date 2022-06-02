@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.finalproject.Helper.FirebaseData;
 import com.example.finalproject.Models.Category;
@@ -58,7 +59,8 @@ public class UserFragment extends Fragment {
         }
         TableView table=view.findViewById(R.id.table_data_view);
 
-
+        TextView title=view.findViewById(R.id.title);
+        title.setText("Users");
 
         add=view.findViewById(R.id.add);
         String[] Headers={"Name","Email","Address","Phone"};

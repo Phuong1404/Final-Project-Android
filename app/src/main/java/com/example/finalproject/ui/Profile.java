@@ -46,6 +46,8 @@ public class Profile extends Fragment {
         if(view==null){
             view=inflater.inflate(R.layout.fragment_profile, container, false);
         }
+        TextView title=view.findViewById(R.id.title);
+        title.setText("My Profile");
         FirebaseData data=new FirebaseData();
         mAuth=FirebaseAuth.getInstance();
         Name=(TextView) view.findViewById(R.id.name);
@@ -67,7 +69,7 @@ public class Profile extends Fragment {
 
 
                 Name.setText(user.getName());
-                Location.setText("District 9, Ho Chi Minh");
+                Location.setText(Address1);
                 PhoneNum.setText(user.getPhoneNumber());
                 Email.setText(user.getEmail());
                 Address.setText(user.getAddress());

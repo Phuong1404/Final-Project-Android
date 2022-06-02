@@ -58,6 +58,8 @@ public class AddProductActivity extends AppCompatActivity {
         Price=findViewById(R.id.price);
         Quanlity=findViewById(R.id.quantity);
         image=findViewById(R.id.image);
+        TextView title=findViewById(R.id.title);
+        title.setText("Add Product");
 
         FirebaseData data=new FirebaseData();
         storage= FirebaseStorage.getInstance();

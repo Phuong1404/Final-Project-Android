@@ -67,6 +67,8 @@ public class DetaiProActivity extends AppCompatActivity {
         FirebaseData data=new FirebaseData();
         storage=FirebaseStorage.getInstance();
         storageReference=storage.getReference();
+        TextView title=findViewById(R.id.title);
+        title.setText("Detail User");
         if(Id!=null){
             spnCategory = (Spinner) findViewById(R.id.category);
             List<String> category=new ArrayList<>();

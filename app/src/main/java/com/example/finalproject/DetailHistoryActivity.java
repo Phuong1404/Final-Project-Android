@@ -30,6 +30,7 @@ public class DetailHistoryActivity extends AppCompatActivity {
     ListView listView;
     FirebaseAuth mAuth;
     Double Total;
+    TextView phone,address,name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,9 @@ public class DetailHistoryActivity extends AppCompatActivity {
         listView=(ListView) findViewById(R.id.listview);
         mAuth=FirebaseAuth.getInstance();
         listView.setEnabled(false);
+        phone=findViewById(R.id.phone);
+        address=findViewById(R.id.address);
+        name=findViewById(R.id.name);
         if(mAuth.getCurrentUser().getUid()==null)
         {
             startActivity(new Intent(DetailHistoryActivity.this,LoginActivity.class));
@@ -47,6 +51,24 @@ public class DetailHistoryActivity extends AppCompatActivity {
         String Idbill= intent.getStringExtra("id");
         TextView total1=findViewById(R.id.total);
         TextView subtotal1=findViewById(R.id.subtotal);
+
+        data.GetDataOrder(mAuth.getCurrentUser().getUid(),Idbill).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Map singleValue=(Map)snapshot.getValue();
+                String Name=(String)singleValue.get("name");
+                String Phone=(String)singleValue.get("phone");
+                String Address=(String)singleValue.get("address");
+                address.setText(Address);
+                phone.setText(Phone);
+                name.setText(Name);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         data.GetDataHistoryDetail(mAuth.getCurrentUser().getUid(),Idbill).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

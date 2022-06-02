@@ -46,7 +46,8 @@ public class AllProductActivity extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
 
-
+        TextView title=findViewById(R.id.title);
+        title.setText("All Product");
         BtnPre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
