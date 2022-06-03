@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -31,6 +32,7 @@ public class DetailHistoryActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     Double Total;
     TextView phone,address,name;
+    private ImageView BtnPre1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +40,7 @@ public class DetailHistoryActivity extends AppCompatActivity {
         List<Detail1> listDetail1=new ArrayList<>();
         FirebaseData data=new FirebaseData();
         listView=(ListView) findViewById(R.id.listview);
+        BtnPre1=findViewById(R.id.BtnPre1);
         mAuth=FirebaseAuth.getInstance();
         listView.setEnabled(false);
         phone=findViewById(R.id.phone);
@@ -94,6 +97,14 @@ public class DetailHistoryActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+        BtnPre1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(DetailHistoryActivity.this,MainActivity.class);
+                intent.putExtra("menu","1");
+                startActivity(intent);
             }
         });
     }

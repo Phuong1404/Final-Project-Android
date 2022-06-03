@@ -4,6 +4,7 @@ import com.example.finalproject.Models.Cart;
 import com.example.finalproject.Models.Delivery;
 import com.example.finalproject.Models.Detail;
 import com.example.finalproject.Models.Detail1;
+import com.example.finalproject.Models.Notification;
 import com.example.finalproject.Models.Order;
 import com.example.finalproject.Models.Product;
 import com.example.finalproject.Models.User;
@@ -159,6 +160,18 @@ public class FirebaseData {
         database.getReference("Temp").child(UserId).child(OrderId).child("name").setValue(Name);
         database.getReference("Temp").child(UserId).child(OrderId).child("phone").setValue(Phone);
         database.getReference("Temp").child(UserId).child(OrderId).child("address").setValue(Address);
+    }
+    public void AddNotification(String UserId, Notification notification)
+    {
+        database.getReference("Notifi").child(UserId).child(notification.getId()).setValue(notification);
+    }
+    public void DeleteNotification(String UsersId, String NotiId)
+    {
+        database.getReference("Notifi").child(UsersId).child(NotiId).removeValue();
+    }
+    public DatabaseReference GetNotification(String UserId)
+    {
+        return database.getReference("Notifi").child(UserId);
     }
 }
 

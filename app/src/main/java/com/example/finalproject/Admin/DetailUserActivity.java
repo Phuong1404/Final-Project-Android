@@ -2,15 +2,21 @@ package com.example.finalproject.Admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.finalproject.Helper.FirebaseData;
+import com.example.finalproject.MainadminActivity;
 import com.example.finalproject.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -26,9 +32,13 @@ public class DetailUserActivity extends AppCompatActivity {
     TextView update;
     AlertDialog dialog;
     AlertDialog.Builder builder;
+    private ImageView BtnPre1;
+    ImageView menubar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        menubar=findViewById(R.id.menubar);
+
         setContentView(R.layout.activity_detail_user);
         name=findViewById(R.id.name);
         address=findViewById(R.id.address);
@@ -37,6 +47,7 @@ public class DetailUserActivity extends AppCompatActivity {
         update=findViewById(R.id.changerole);
         mAuth=FirebaseAuth.getInstance();
         TextView title=findViewById(R.id.title);
+        BtnPre1=findViewById(R.id.BtnPre1);
         title.setText("Detail User");
         FirebaseData data=new FirebaseData();
         data.GetDataUser(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
@@ -68,6 +79,9 @@ public class DetailUserActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         data.ChangeRole(mAuth.getCurrentUser().getUid());
+                        Intent intent=new Intent(DetailUserActivity.this, MainadminActivity.class);
+                        intent.putExtra("tab","2");
+                        startActivity(intent);
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -78,6 +92,14 @@ public class DetailUserActivity extends AppCompatActivity {
                 });
                 dialog=builder.create();
                 dialog.show();
+            }
+        });
+        BtnPre1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(DetailUserActivity.this, MainadminActivity.class);
+                intent.putExtra("tab","2");
+                startActivity(intent);
             }
         });
     }

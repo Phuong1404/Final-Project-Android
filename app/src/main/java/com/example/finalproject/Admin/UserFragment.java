@@ -39,6 +39,8 @@ public class UserFragment extends Fragment {
     AlertDialog.Builder builder;
     View view;
     ImageView add;
+    private ImageView BtnPre1;
+    ImageView menubar;
     public UserFragment() {
         // Required empty public constructor
     }
@@ -61,6 +63,11 @@ public class UserFragment extends Fragment {
 
         TextView title=view.findViewById(R.id.title);
         title.setText("Users");
+
+        menubar=view.findViewById(R.id.menubar);
+        BtnPre1=view.findViewById(R.id.BtnPre1);
+        menubar.setVisibility(View.INVISIBLE);
+        BtnPre1.setVisibility(View.INVISIBLE);
 
         add=view.findViewById(R.id.add);
         String[] Headers={"Name","Email","Address","Phone"};

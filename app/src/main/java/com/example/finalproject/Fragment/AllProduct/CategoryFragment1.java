@@ -57,15 +57,15 @@ public class CategoryFragment1 extends Fragment {
                 for(DataSnapshot ds:snapshot.getChildren())
                 {
                     Map singleValue=(Map)ds.getValue();
-                    Category Category=ds.child("Category").getValue(Category.class);
+                    Category Category=ds.child("category").getValue(Category.class);
                     if(Category.getId().equals("0"))
                     {
                         String Id=ds.getKey();
-                        String Name=(String) singleValue.get("Name");
-                        String Price=(String)singleValue.get("Price");
-                        String Price_Point=(String)singleValue.get("Price_Point");
-                        String Quantity=(String)singleValue.get("Quantity");
-                        String Image=(String)singleValue.get("Image");
+                        String Name=(String) singleValue.get("name");
+                        String Price=(String)singleValue.get("price");
+                        String Price_Point=(String)singleValue.get("price_Point");
+                        String Quantity=(String)singleValue.get("quantity");
+                        String Image=(String)singleValue.get("image");
                         productList.add(new Product(Id,Name,Price,Price_Point,Quantity,Image,Category));
                     }
                 }

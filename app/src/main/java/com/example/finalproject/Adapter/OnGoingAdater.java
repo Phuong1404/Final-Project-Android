@@ -11,7 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.finalproject.DetailHistoryActivity;
 import com.example.finalproject.Helper.FirebaseData;
+import com.example.finalproject.MainActivity;
 import com.example.finalproject.Models.Order;
 import com.example.finalproject.ProductDetailActivity;
 import com.example.finalproject.R;
@@ -50,6 +52,9 @@ public class OnGoingAdater extends ArrayAdapter<Order> {
             @Override
             public void onClick(View view) {
                 data.DeleteOrder(mAuth.getCurrentUser().getUid(),orderList.get(position).getId());
+                Intent intent=new Intent(parent.getContext(), MainActivity.class);
+                intent.putExtra("menu","1");
+                context.startActivity(intent);
             }
         });
         //-----------------------------------------------------------------

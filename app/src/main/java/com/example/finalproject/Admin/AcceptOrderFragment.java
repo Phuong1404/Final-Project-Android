@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -35,6 +36,8 @@ public class AcceptOrderFragment extends Fragment {
     ListView listView;
     AcceptAdater acceptAdater;
     FirebaseAuth mAuth;
+    private ImageView BtnPre1;
+    ImageView menubar;
     public AcceptOrderFragment() {
         // Required empty public constructor
     }
@@ -46,6 +49,10 @@ public class AcceptOrderFragment extends Fragment {
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_accept_order, container, false);
         }
+        menubar=view.findViewById(R.id.menubar);
+        BtnPre1=view.findViewById(R.id.BtnPre1);
+        menubar.setVisibility(View.INVISIBLE);
+        BtnPre1.setVisibility(View.INVISIBLE);
         listView=(ListView) view.findViewById(R.id.listview);
         mAuth=FirebaseAuth.getInstance();
         List<Order> acceptlist = new ArrayList<>();
@@ -67,7 +74,11 @@ public class AcceptOrderFragment extends Fragment {
                     String Status= (String) singleValue.get("status");
                     acceptlist.add(new Order(Id,Address,Name,Phone,Status,TimeOrder,Total));
                 }
-                acceptAdater=new AcceptAdater(getActivity(),acceptlist);
+                if(getActivity()!=null)
+                {
+                    acceptAdater=new AcceptAdater(getActivity(),acceptlist);
+                }
+
                 listView.setAdapter(acceptAdater);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override

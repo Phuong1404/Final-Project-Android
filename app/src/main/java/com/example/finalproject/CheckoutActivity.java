@@ -46,6 +46,7 @@ public class CheckoutActivity extends AppCompatActivity {
         price=(TextView) findViewById(R.id.price);
         total=(TextView) findViewById(R.id.total);
         Accept=(TextView)findViewById(R.id.Accept);
+        change=findViewById(R.id.changeaddress);
         name=findViewById(R.id.name);
         phone=findViewById(R.id.phone);
         address=findViewById(R.id.address);

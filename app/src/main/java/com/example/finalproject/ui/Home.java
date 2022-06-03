@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.finalproject.AllProductActivity;
@@ -35,6 +36,7 @@ public class Home extends Fragment {
     FirebaseAuth mAuth;
     EditText searchtext;
     ImageView menubar,search,cart;
+    RelativeLayout cate1,cate2,cate3;
 
     public Home() {
         mAuth=FirebaseAuth.getInstance();
@@ -58,7 +60,10 @@ public class Home extends Fragment {
         AllProduct=view.findViewById(R.id.AllProduct);
         logout=view.findViewById(R.id.logout);
         menubar=view.findViewById(R.id.menubar);
-        cart=view.findViewById(R.id.menubar);
+        cart=view.findViewById(R.id.cart);
+        cate1=view.findViewById(R.id.cate1);
+        cate2=view.findViewById(R.id.cate2);
+        cate3=view.findViewById(R.id.cate3);
 
         FirebaseData data=new FirebaseData();
         data.GetDataUser(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
@@ -77,7 +82,9 @@ public class Home extends Fragment {
         cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent=new Intent(getActivity(),MainActivity.class);
+                intent.putExtra("menu","2");
+                startActivity(intent);
             }
         });
         //------------------------------------------------------------------------------
@@ -108,6 +115,32 @@ public class Home extends Fragment {
             @Override
             public void onClick(View view) {
                 ((MainActivity)getActivity()).open();
+            }
+        });
+        //---------------------------------------------------------------------------------
+
+        cate1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i1=new Intent(getActivity(),AllProductActivity.class);
+                i1.putExtra("tab","1");
+                startActivity(i1);
+            }
+        });
+        cate2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i1=new Intent(getActivity(),AllProductActivity.class);
+                i1.putExtra("tab","2");
+                startActivity(i1);
+            }
+        });
+        cate3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i1=new Intent(getActivity(),AllProductActivity.class);
+                i1.putExtra("tab","3");
+                startActivity(i1);
             }
         });
         return view;

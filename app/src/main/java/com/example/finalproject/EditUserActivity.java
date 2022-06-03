@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.finalproject.Helper.FirebaseData;
@@ -26,10 +27,12 @@ public class EditUserActivity extends AppCompatActivity {
     TextView update;
     EditText name,address,email,phone;
     int Point_1,Point_2;
+    private ImageView BtnPre1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_user);
+        BtnPre1=findViewById(R.id.BtnPre1);
         name=findViewById(R.id.name);
         address=findViewById(R.id.address);
         email=findViewById(R.id.email);
@@ -95,7 +98,18 @@ public class EditUserActivity extends AppCompatActivity {
             FirebaseData data=new FirebaseData();
             User user=new User(mAuth.getCurrentUser().getUid(),Name,"",Address,Email,Phone,Point_1,Point_2,"","");
             data.updataProfile(mAuth.getCurrentUser().getUid(),user);
+            Intent intent=new Intent(EditUserActivity.this,MainActivity.class);
+            intent.putExtra("menu","3");
+            startActivity(intent);
             //startActivity(new Intent(EditUserActivity.this, Profile.class));
         }
+        BtnPre1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(EditUserActivity.this,MainActivity.class);
+                intent.putExtra("menu","3");
+                startActivity(intent);
+            }
+        });
     }
 }

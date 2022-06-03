@@ -3,6 +3,9 @@ package com.example.finalproject.Admin;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -21,6 +24,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.finalproject.Helper.FirebaseData;
+import com.example.finalproject.MainActivity;
+import com.example.finalproject.MainadminActivity;
 import com.example.finalproject.Models.Category;
 import com.example.finalproject.Models.Product;
 import com.example.finalproject.R;
@@ -58,24 +63,25 @@ public class DetaiProActivity extends AppCompatActivity {
     int CateId;
     Category category1;
     String img1;
+    private ImageView BtnPre1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detai_pro);
+
         Intent intent=getIntent();
         String Id=intent.getStringExtra("Id");
         FirebaseData data=new FirebaseData();
         storage=FirebaseStorage.getInstance();
         storageReference=storage.getReference();
         TextView title=findViewById(R.id.title);
-        title.setText("Detail User");
+        title.setText("Detail Product");
         if(Id!=null){
             spnCategory = (Spinner) findViewById(R.id.category);
             List<String> category=new ArrayList<>();
-            category.add("Category 1");
-            category.add("Category 2");
-            category.add("Category 3");
-            category.add("Category 4");
+            category.add("Coffee");
+            category.add("Tea");
+            category.add("Fruit Juice");
             ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,category);
             adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
             spnCategory.setAdapter(adapter);
@@ -100,6 +106,7 @@ public class DetaiProActivity extends AppCompatActivity {
             price=findViewById(R.id.price);
             quanlity=findViewById(R.id.quantity);
             btn=findViewById(R.id.update);
+            BtnPre1=findViewById(R.id.BtnPre1);
 
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -125,6 +132,9 @@ public class DetaiProActivity extends AppCompatActivity {
                         if(img1!=null)
                         {
                             uploadPicture(randomKey);
+                            Intent intent=new Intent(DetaiProActivity.this, MainadminActivity.class);
+                            intent.putExtra("tab","1");
+                            startActivity(intent);
                         }
                         else
                         {
@@ -133,7 +143,14 @@ public class DetaiProActivity extends AppCompatActivity {
                     }
                 }
             });
-
+            BtnPre1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent=new Intent(DetaiProActivity.this, MainadminActivity.class);
+                    intent.putExtra("tab","1");
+                    startActivity(intent);
+                }
+            });
             data.GetOneProduct(Id).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {

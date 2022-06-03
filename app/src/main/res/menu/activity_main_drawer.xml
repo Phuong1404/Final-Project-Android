@@ -14,7 +14,7 @@
             android:title="My Order" />
         <item
             android:id="@+id/nav_history"
-            android:icon="@drawable/ic_shopping_cart"
+            android:icon="@drawable/ic_baseline_history_24"
             android:title="History"/>
         <item
             android:id="@+id/nav_rewards"
@@ -26,7 +26,7 @@
             android:title="Profile" />
         <item
             android:id="@+id/logout"
-            android:icon="@drawable/ic_user"
+            android:icon="@drawable/ic_baseline_login_24"
             android:title="Log out"
             android:onClick="Logout"/>
     </group>

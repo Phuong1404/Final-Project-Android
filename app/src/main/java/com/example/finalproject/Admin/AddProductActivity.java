@@ -3,6 +3,9 @@ package com.example.finalproject.Admin;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -19,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.finalproject.Helper.FirebaseData;
+import com.example.finalproject.MainadminActivity;
 import com.example.finalproject.Models.Category;
 import com.example.finalproject.Models.Product;
 import com.example.finalproject.R;
@@ -47,11 +51,13 @@ public class AddProductActivity extends AppCompatActivity {
     private StorageReference storageReference;
     public Uri imageUri;
     Category cate;
+    private ImageView BtnPre1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
 
+        BtnPre1=findViewById(R.id.BtnPre1);
         add=findViewById(R.id.add);
         chooseImage=findViewById(R.id.chooseimage);
         Name=findViewById(R.id.name);
@@ -66,10 +72,9 @@ public class AddProductActivity extends AppCompatActivity {
         storageReference=storage.getReference();
             spnCategory = (Spinner) findViewById(R.id.category);
             List<String> category=new ArrayList<>();
-            category.add("Category 1");
-            category.add("Category 2");
-            category.add("Category 3");
-            category.add("Category 4");
+        category.add("Coffee");
+        category.add("Tea");
+        category.add("Fruit Juice");
             ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,category);
             adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
             spnCategory.setAdapter(adapter);
@@ -109,6 +114,9 @@ public class AddProductActivity extends AppCompatActivity {
                         if(imageUri!=null)
                         {
                             uploadPicture(randomKey);
+                            Intent intent=new Intent(AddProductActivity.this, MainadminActivity.class);
+                            intent.putExtra("tab","1");
+                            startActivity(intent);
                         }
                         else
                         {
@@ -123,7 +131,14 @@ public class AddProductActivity extends AppCompatActivity {
                 chooseImage();
             }
         });
-
+        BtnPre1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(AddProductActivity.this, MainadminActivity.class);
+                intent.putExtra("tab","1");
+                startActivity(intent);
+            }
+        });
     }
     private void chooseImage(){
         Intent intentImage=new Intent();

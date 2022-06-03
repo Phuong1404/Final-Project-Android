@@ -96,7 +96,9 @@ public class MyOrder extends Fragment {
                     Total=Total+total;
                     listCart.add(new Cart(ds.getKey(),Quantity,product,OrderRequest,total));
                 }
-                adater=new ListOrderAdater(getActivity(),listCart);
+                if (getActivity()!=null) {
+                    adater = new ListOrderAdater(getActivity(), listCart);
+                }
                 listView.setDivider(null);
                 listView.setAdapter(adater);
             }
@@ -114,9 +116,9 @@ public class MyOrder extends Fragment {
                 String Id1=snapshot.getKey();
                 String Name1= (String) singleValue.get("name");
                 String Phone1= (String) singleValue.get("phone");
-                //String Address1= (String) singleValue.get("address");
+                String Address1= (String) singleValue.get("address");
                 String Email1=(String) singleValue.get("email");
-                user=new User(Id1,Name1,"","",Email1,Phone1,0,0,"","");
+                user=new User(Id1,Name1,"",Address1,Email1,Phone1,0,0,"","");
             }
 
             @Override

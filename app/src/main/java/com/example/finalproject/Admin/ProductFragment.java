@@ -39,6 +39,8 @@ public class ProductFragment extends Fragment {
     AlertDialog.Builder builder;
     View view;
     ImageView add;
+    private ImageView BtnPre1;
+    ImageView menubar;
     public ProductFragment() {
         // Required empty public constructor
     }
@@ -61,7 +63,10 @@ public class ProductFragment extends Fragment {
         }
         TableView table=view.findViewById(R.id.table_data_view);
 
-
+        menubar=view.findViewById(R.id.menubar);
+        BtnPre1=view.findViewById(R.id.BtnPre1);
+        menubar.setVisibility(View.INVISIBLE);
+        BtnPre1.setVisibility(View.INVISIBLE);
         TextView title=view.findViewById(R.id.title);
         title.setText("Products");
         add=view.findViewById(R.id.add);
@@ -92,14 +97,17 @@ public class ProductFragment extends Fragment {
                         datatable[i][2]=p.getQuantity();
                         datatable[i][3]=p.getCategory().getName();
                     }
-                    table.setHeaderAdapter(new SimpleTableHeaderAdapter(getActivity(),Headers));
-                    table.setDataAdapter(new SimpleTableDataAdapter(getActivity(),datatable));
+                    if(getActivity()!=null) {
+                        table.setHeaderAdapter(new SimpleTableHeaderAdapter(getActivity(), Headers));
+                        table.setDataAdapter(new SimpleTableDataAdapter(getActivity(), datatable));
+                    }
                 }
                 else {
                     String[][] datatable={{"","","",""}};
+                    if(getActivity()!=null) {
                     table.setHeaderAdapter(new SimpleTableHeaderAdapter(getActivity(),Headers));
                     table.setDataAdapter(new SimpleTableDataAdapter(getActivity(),datatable));
-                }
+                }}
             }
 
             @Override

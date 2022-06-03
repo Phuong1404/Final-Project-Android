@@ -2,6 +2,8 @@ package com.example.finalproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -31,6 +33,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import java.util.Map;
 
 public class ProductDetailActivity extends AppCompatActivity {
     String Size,Roas,Grind,Ice;
@@ -76,6 +79,33 @@ public class ProductDetailActivity extends AppCompatActivity {
         String id1=intent.getStringExtra("id");
         TextView title=findViewById(R.id.title);
         title.setText("Product Detail");
+
+        data.GetNotification(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds:snapshot.getChildren())
+                {
+                    Map singleValue=(Map)ds.getValue();
+                    String Title=(String)singleValue.get("title");
+                    String Content=(String)singleValue.get("content");
+
+                    NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(ProductDetailActivity.this, "Accept")
+                            .setSmallIcon(R.drawable.coffeebean)
+                            .setContentTitle(Title)
+                            .setContentText(Content)
+                            .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                    NotificationManagerCompat notificationManager = NotificationManagerCompat.from(ProductDetailActivity.this);
+                    notificationManager.notify(100, mBuilder.build());
+                    data.DeleteNotification(mAuth.getCurrentUser().getUid(),ds.getKey());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         data.GetDataProduct(id1).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
